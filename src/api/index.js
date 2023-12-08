@@ -1,11 +1,12 @@
 import axios from 'axios';
 
+const baseUrl = import.meta.env.MODE === 'production' 
+  ? import.meta.env.VITE_PROD_API
+  : import.meta.env.VITE_DEV_API;
+
 const api = axios.create({
-  baseURL:"http://localhost:8000",
-    // process.env.NODE_ENV === 'development'
-    //   ? process.env.REACT_APP_DEV_API
-    //   : process.env.REACT_APP_PROD_API,
+  baseUrl,
   withCredentials: true,
 });
 
-export { api };
+export { api, baseUrl};

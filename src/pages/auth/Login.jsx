@@ -7,6 +7,7 @@ import google from "../../assets/google.png"
 import office from "../../assets/office.jpeg"
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
+import { baseUrl } from "../../api";
 
 const width = 400;
 const height = 500;
@@ -29,25 +30,12 @@ const Login = () => {
 
     const googleLogin = () => {
         myDevice == "isDesktop"
-        ? window.open(
-            `${"http://localhost:8000/auth/google"
-                // process.env.NODE_ENV == "production"
-                // ? `${process.env.REACT_APP_PROD_API}/auth/google`
-                // : `${process.env.REACT_APP_DEV_API}/auth/google`
-            }`,
-            "",
+        ? window.open(`${baseUrl}/auth/google `,"",
             `toolbar=no, location=no, directories=no, status=no, menubar=no, 
     scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
     height=${height}, top=${top}, left=${left}`
             )
-        : window.location.replace(
-            `${
-                "http://localhost:8000/auth/google"
-                // process.env.NODE_ENV == "production"
-                // ? `${process.env.REACT_APP_PROD_API}/auth/google`
-                // : `${process.env.REACT_APP_DEV_API}/auth/google`
-            }`
-            );
+        : window.location.replace(`${baseUrl}/auth/google`);
     };
 
 
@@ -56,26 +44,14 @@ const Login = () => {
     const officeLogin = () => {
         myDevice === "isDesktop"
             ? window.open(
-                  `${
-                      "http://localhost:8000/auth/microsoft"
-                      // Replace with appropriate production or development URL
-                      // process.env.NODE_ENV === "production"
-                      //     ? `${process.env.REACT_APP_PROD_API}/auth/microsoft`
-                      //     : `${process.env.REACT_APP_DEV_API}/auth/microsoft`
-                  }`,
+                  `${`${baseUrl}/auth/microsoft`}`,
                   "",
                   `toolbar=no, location=no, directories=no, status=no, menubar=no, 
                   scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
                   height=${height}, top=${top}, left=${left}`
               )
             : window.location.replace(
-                  `${
-                      "http://localhost:8000/auth/microsoft"
-                      // Replace with appropriate production or development URL
-                      // process.env.NODE_ENV === "production"
-                      //     ? `${process.env.REACT_APP_PROD_API}/auth/microsoft`
-                      //     : `${process.env.REACT_APP_DEV_API}/auth/microsoft`
-                  }`
+                  `${baseUrl}/auth/microsoft`
               );
     };
 
@@ -123,7 +99,7 @@ const Login = () => {
                         Continue with Google
                     </ButtonM>
                         <span>OR</span>
-                    <ButtonM  onClick={() => {officeLogin();}} type="primary" className={`p-5 bg-input-bg-color`} icon={<img src={office} height={20} width={20} alt="Google Icon" />}>
+                    <ButtonM  onClick={() => {officeLogin();}} type="primary" className={`p-5 bg-input-bg-color text-black`} icon={<img src={office} height={20} width={20} alt="Google Icon" />}>
                         Continue with office 
                     </ButtonM>
                 </div>
