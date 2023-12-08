@@ -1,5 +1,4 @@
 import HomePage from "./Home/Home"
-import About from "./About/About"
 import Complaints from "./Complaints/Complaints"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
@@ -16,7 +15,6 @@ import LandingPage from "./LandingPage/LandingPage"
 
 export {
     HomePage,
-    About,
     Login,
     Profile,
     Register,
