@@ -1,22 +1,31 @@
 import HomePage from "./Home/Home"
-import Complaints from "./protected/Complaints/Complaints"
+import Complaints from "./protected/complaints/Complaints"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
-import Profile from "./Profile/Profile"
-import SubmitComplaint from "./protected/Complaints/SubmitComplaint"
+import SubmitComplaint from "./protected/complaints/SubmitComplaint"
 import PageNotFound from "./errors/PageNotFound"
-import People from "./protected/People/People"
-import Reports from "./reports/Reports"
-import CalendarPage from "./calendar/Calendar"
-import HotLineRooms from "./hotlinerooms/HotLineRooms"
-import HotLineRoom from "./room/HotlineRoom"
-import ComplaintDetails from "./protected/Complaints/ComplaintDetails"  
-import LandingPage from "./LandingPage/LandingPage"  
+import People from "./protected/people/People"
+import Reports from "./protected/reports/Reports"
+import CalendarPage from "./protected/calendar/Calendar"
+import HotLineRooms from "./protected/hotlinerooms/HotLineRooms"
+import HotLineRoom from "./protected/room/HotlineRoom"
+import ComplaintDetails from "./protected/complaints/ComplaintDetails"  
+import LandingPage from "./LandingPage/LandingPage"
+import AssignedIssues from "../admin-ui/AssignedIssues/AssignedIssues";
+import Protected from "./protected/Protected";
+import Profile from "./protected/profile/Profile";
+import Simon from "./Simon";
+import Analytics from '../admin-ui/analytics/Analytics'
+ 
 
 export {
+    Simon,
+    Analytics,
+    AssignedIssues,
+    Protected,
+    Profile,
     HomePage,
     Login,
-    Profile,
     Register,
     Complaints,
     SubmitComplaint,

@@ -3,14 +3,11 @@ import { useState, useEffect } from "react";
 
 // components
 import { HOME, LOGIN, COMPLAINT, REGISTER, COMPLAINTS, PAGENOTFOUND, PROFILE,SIMON, ROOMS, ROOM, ANALYTICS, ADDISSUE, CALENDAR, ASSIGNED, PEOPLE, REPORTS, LANDINGPAGE } from "./utils/Routes";
-import Simon from "./pages/Simon";
-import Analytics from './admin-ui/analytics/Analytics'
+
 
 // import { Test } from "./pages/Test";
-import { Login,CalendarPage, HotLineRooms,HotLineRoom, Register,  Complaints, Reports, SubmitComplaint, Profile, PageNotFound, ComplaintDetails, People, LandingPage } from "./pages";
+import { Login,CalendarPage, HotLineRooms,HotLineRoom, Register,  Complaints, Reports, SubmitComplaint, PageNotFound, ComplaintDetails, People, LandingPage, AssignedIssues, Profile, Simon, Analytics } from "./pages";
 
-import AssignedIssues from "./admin-ui/AssignedIssues/AssignedIssues";
-import Protected from "./pages/protected/Protected";
 
 function App() {
 
