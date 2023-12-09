@@ -1,1 +1,6 @@
-{ "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }] }
+{
+  "routes": [
+    { "src": "^/(auth|user|api)/.*", "dest": "/:splat", "status": 200 },
+    { "src": "/[^.]+", "dest": "/", "status": 200 }
+  ]
+}
