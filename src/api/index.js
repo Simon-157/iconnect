@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.MODE === 'production'
   : import.meta.env.VITE_DEV_API;
 
 const api = axios.create({
-  baseUrl,
+  baseURL:baseUrl,
   withCredentials: true,
 });
 
