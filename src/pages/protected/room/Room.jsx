@@ -3,20 +3,20 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useQueryClient } from "react-query";
 import { VscDebugDisconnect } from "react-icons/vsc";
 import { BanIcon } from "lucide-react";
-import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { userContext } from "../../contexts/UserContext";
-import useSplitUsersIntoSections from "../../hooks/useSplitUsersIntoSections";
-import useLoadRoomMeta from "../../hooks/useLoadRoomMeta";
-import { useVoiceStore } from "../../hotline-room-engine/webrtc/store/useVoiceStore";
-import { useConsumerStore } from "../../hotline-room-engine/webrtc/store/useConsumerStore";
-import { useProducerStore } from "../../hotline-room-engine/webrtc/store/useProducerStore";
-import Loader from "../../components/ui/Loader";
+import { WebSocketContext } from "../../../contexts/WebsocketContext";
+import { userContext } from "../../../contexts/UserContext";
+import useSplitUsersIntoSections from "../../../hooks/useSplitUsersIntoSections";
+import useLoadRoomMeta from "../../../hooks/useLoadRoomMeta";
+import { useVoiceStore } from "../../../hotline-room-engine/webrtc/store/useVoiceStore";
+import { useConsumerStore } from "../../../hotline-room-engine/webrtc/store/useConsumerStore";
+import { useProducerStore } from "../../../hotline-room-engine/webrtc/store/useProducerStore";
+import Loader from "../../../components/ui/Loader";
 
-import RoomArea from "../../components/hotline-room/RoomArea";
-import RoomFooter from "../../components/hotline-room/RoomFooter";
-import NavBar from "../../components/ui/NavBar";
-import PeopleList from "../../components/common/PeopleList";
-import VoiceRoomsLayout from "../../components/ui/VoiceRoomsLayout";
+import RoomArea from "../../../components/hotline-room/RoomArea";
+import RoomFooter from "../../../components/hotline-room/RoomFooter";
+import NavBar from "../../../components/ui/NavBar";
+import PeopleList from "../../../components/common/PeopleList";
+import VoiceRoomsLayout from "../../../components/ui/VoiceRoomsLayout";
 
 
 const room = () => {

@@ -1,21 +1,21 @@
 import { useContext, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "react-query";
-import { userContext } from "../../contexts/UserContext";
-import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { useRoomProfileModalStore } from "../../store/useRoomProfileModal";
-import Navbar from "../../components/ui/NavBar";
-import PeopleList from "../../components/common/PeopleList";
-import VoiceRoomsLayout from "../../components/ui/VoiceRoomsLayout/";
-import RoomArea from "../../components/hotline-room/RoomArea";
-import { Button } from "../../components/ui/button";
 import { VscDebugDisconnect } from "react-icons/vsc";
 import { BanIcon } from "lucide-react";
-import useSplitUsersIntoSections from "../../hooks/useSplitUsersIntoSections";
-import useLoadRoomMeta from "../../hooks/useLoadRoomMeta";
-import Loader from "../../components/ui/Loader";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { userContext } from "../../../contexts/UserContext";
+import { WebSocketContext } from "../../../contexts/WebsocketContext";
+import { useRoomProfileModalStore } from "../../../store/useRoomProfileModal";
+import Navbar from "../../../components/ui/NavBar";
+import PeopleList from "../../../components/common/PeopleList";
+import VoiceRoomsLayout from "../../../components/ui/VoiceRoomsLayout";
+import RoomArea from "../../../components/hotline-room/RoomArea";
+import { Button } from "../../../components/ui/button";
+import useSplitUsersIntoSections from "../../../hooks/useSplitUsersIntoSections";
+import useLoadRoomMeta from "../../../hooks/useLoadRoomMeta";
+import Loader from "../../../components/ui/Loader";
 
 const HotlineRoom = () => {
   const navigate = useNavigate();

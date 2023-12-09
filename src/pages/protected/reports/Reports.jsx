@@ -1,11 +1,11 @@
 import React from "react";
-import { AppLayout } from "../../components/ui/AppLayout";
-import AppSideBar from "../../components/common/AppSideBar";
-import MarkdownEditor from "../../admin-ui/report/MarkDownEditor";
-import { ContentScrollable } from "../../components/ui/ContentScrollable";
-import ReportComponent from "../../admin-ui/report/reportComponent";
+import { AppLayout } from "../../../components/ui/AppLayout";
+import AppSideBar from "../../../components/common/AppSideBar";
+import MarkdownEditor from "../../../admin-ui/report/MarkDownEditor";
+import { ContentScrollable } from "../../../components/ui/ContentScrollable";
+import ReportComponent from "../../../admin-ui/report/reportComponent";
 import { useQuery } from "react-query";
-import { api } from "../../api";
+import { api } from "../../../api";
 
 
 const Reports = () => {

@@ -7,7 +7,6 @@ import IssueDetailedContent from "../../../components/complaints/IssueDetailedCo
 import IssueAssignee from "../../../components/complaints/IssueAssignee";
 import { ContentScrollable } from "../../../components/ui/ContentScrollable";
 import { api } from "../../../api";
-import MapContainer from "../../../components/complaints/MapContainer";
 import GoogleMap from "../../../components/complaints/GoogleMap";
 
 

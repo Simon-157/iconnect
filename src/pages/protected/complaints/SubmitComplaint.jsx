@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import ComplaintForm from "../../components/complaints/ComplaintForm";
-import { Nfc, Home, Layers, Settings, Contact, HelpCircle } from "lucide-react";
+import ComplaintForm from "../../../components/complaints/ComplaintForm";
 // components
-import { AppLayout } from "../../components/ui/AppLayout";
-import AppSideBar from "../../components/common/AppSideBar";
-import {ContentScrollable} from "../../components/ui/ContentScrollable"
+import { AppLayout } from "../../../components/ui/AppLayout";
+import AppSideBar from "../../../components/common/AppSideBar";
+import {ContentScrollable} from "../../../components/ui/ContentScrollable"
 
 const SubmitComplaint = ({ isDarkMode }) => {
   return (
