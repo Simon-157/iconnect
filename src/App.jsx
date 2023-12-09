@@ -22,7 +22,7 @@ return (
               <Route path={LOGIN} element={<Login />} />
               <Route path={REGISTER} element={<Register />} />
 
-              <Route element={<Protected />}>
+              <Route path = "/playground" element={<Protected />}>
                 <Route path={ADDISSUE} element={<SubmitComplaint isDarkMode={isDarkMode} />} />
                 <Route path={PROFILE} element={<Profile />} />
                 <Route path={ROOM} element={<HotLineRoom/>} />
