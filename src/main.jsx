@@ -14,6 +14,7 @@ import WebrtcApp from './hotline-room-engine/webrtc/WebrtcApp.jsx';
 import SoundEffectPlayer from './hotline-room-engine/room/sound/SoundEffectPlayer.jsx';
 import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
+import "dist/react-query-devtools.production.min.js";
 
 
 const history = createBrowserHistory();

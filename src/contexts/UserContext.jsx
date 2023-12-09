@@ -8,6 +8,7 @@ const UserProvider = ({ children }) => {
   const getUser = async () => {
     try {
       const { data: user } = await api.get('/user');
+      console.log(user)
       return user;
     } catch (error) {
       // Handle errors here
