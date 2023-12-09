@@ -4,7 +4,7 @@ import moment from "moment";
 import Year from "./Year";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./calendar.css";
-import { events } from "../../utils/events";
+import { events } from "../../../utils/events";
 import { AppLayout } from "../../../components/ui/AppLayout";
 import AppSideBar from "../../../components/common/AppSideBar";
 import { ContentScrollable } from "../../../components/ui/ContentScrollable";
