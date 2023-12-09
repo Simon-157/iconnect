@@ -1,15 +1,12 @@
 import { useContext, useState } from "react";
-import { userContext } from "../../contexts/UserContext";
-import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { useVoiceStore } from "../../hotline-room-engine/webrtc/store/useVoiceStore";
-import useLoadRoomMeta from "../../hooks/useLoadRoomMeta";
-import NavBar from "../../components/ui/NavBar";
-import PeopleList from "../../components/common/PeopleList";
-import VoiceRoomsLayout from "../../components/ui/VoiceRoomsLayout";
-import Feed from "../../components/hotline-room/hotline-feed/Feed";
-import RoomMinimizedCard from "../../components/hotline-room/RoomMinimizedCard";
-import { SideNav } from "../../components/ui/SideNav";
-import AppSideBar from "../../components/common/AppSideBar";
+import { userContext } from "../../../contexts/UserContext";
+import { WebSocketContext } from "../../../contexts/WebsocketContext";
+import { useVoiceStore } from "../../../hotline-room-engine/webrtc/store/useVoiceStore";
+import useLoadRoomMeta from "../../../hooks/useLoadRoomMeta";
+import VoiceRoomsLayout from "../../../components/ui/VoiceRoomsLayout";
+import Feed from "../../../components/hotline-room/hotline-feed/Feed";
+import RoomMinimizedCard from "../../../components/hotline-room/RoomMinimizedCard";
+import AppSideBar from "../../../components/common/AppSideBar";
 
 
 const HotLineRooms = () => {

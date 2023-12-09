@@ -3,16 +3,14 @@ import { useQuery, useQueryClient } from "react-query";
 import debounce from "lodash/debounce";
 
 // components
-import { AppLayout } from "../../components/ui/AppLayout";
-import { ContentScrollable } from "../../components/ui/ContentScrollable";
-import ComplaintsContent from "../../components/complaints/ComplaintsContent";
-import TopTagBar from "../../components/complaints/TopTagBar";
-import Loader from "../../components/ui/Loader";
-import { api } from "../../api";
-import { userContext } from "../../contexts/UserContext";
-import AppSideBar from "../../components/common/AppSideBar";
-import { FeedCardSkeleton } from "../../components/hotline-room/hotline-feed/Feed";
-
+import { AppLayout } from "../../../components/ui/AppLayout";
+import { ContentScrollable } from "../../../components/ui/ContentScrollable";
+import ComplaintsContent from "../../../components/complaints/ComplaintsContent";
+import TopTagBar from "../../../components/complaints/TopTagBar";
+import Loader from "../../../components/ui/Loader";
+import { api } from "../../../api";
+import { userContext } from "../../../contexts/UserContext";
+import AppSideBar from "../../../components/common/AppSideBar";
 
 
 const fetchUserIssues = async (userId, role) => {
@@ -40,6 +38,7 @@ const fetchUserIssues = async (userId, role) => {
 
 const Complaints = () => {
   const { user } = useContext(userContext);
+  console.log(user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(

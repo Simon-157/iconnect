@@ -2,10 +2,10 @@
 import { useContext, useState } from 'react';
 import { Settings, Pencil, Bell, ShieldCheck, ChevronRight, Camera } from "lucide-react";
 // components
-import { AppLayout } from "../../components/ui/AppLayout";
-import AppSideBar from '../../components/common/AppSideBar';
-import { userContext } from '../../contexts/UserContext';
-import { capitalizeInitials } from '../../utils/functions';
+import { AppLayout } from "../../../components/ui/AppLayout";
+import AppSideBar from '../../../components/common/AppSideBar';
+import { userContext } from '../../../contexts/UserContext';
+import { capitalizeInitials } from '../../../utils/functions';
 
 const Profile = () => {
   return (

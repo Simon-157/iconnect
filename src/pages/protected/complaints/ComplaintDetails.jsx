@@ -1,14 +1,13 @@
 import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { AppLayout } from "../../components/ui/AppLayout";
-import AppSideBar from "../../components/common/AppSideBar";
-import IssueDetailedContent from "../../components/complaints/IssueDetailedContent";
-import IssueAssignee from "../../components/complaints/IssueAssignee";
-import { ContentScrollable } from "../../components/ui/ContentScrollable";
-import { api } from "../../api";
-import MapContainer from "../../components/complaints/MapContainer";
-import GoogleMap from "../../components/complaints/GoogleMap";
+import { AppLayout } from "../../../components/ui/AppLayout";
+import AppSideBar from "../../../components/common/AppSideBar";
+import IssueDetailedContent from "../../../components/complaints/IssueDetailedContent";
+import IssueAssignee from "../../../components/complaints/IssueAssignee";
+import { ContentScrollable } from "../../../components/ui/ContentScrollable";
+import { api } from "../../../api";
+import GoogleMap from "../../../components/complaints/GoogleMap";
 
 
 // /issue_resolvers/:categoryId
