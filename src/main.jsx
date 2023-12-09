@@ -14,7 +14,6 @@ import WebrtcApp from './hotline-room-engine/webrtc/WebrtcApp.jsx';
 import SoundEffectPlayer from './hotline-room-engine/room/sound/SoundEffectPlayer.jsx';
 import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
-import "dist/react-query-devtools.production.min.js";
 
 
 const history = createBrowserHistory();
@@ -25,7 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <UserProvider>
-        {/* <NProgress options={{ OnRouteChange: true, showSpinner: false, trickle: true, trickleRate: 0.1 }} /> */}
         {/* <WebSocketProvider> */}
           <MainWsHandler history={history}>
             <WebrtcApp />
