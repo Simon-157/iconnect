@@ -24,7 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <UserProvider>
-        {/* <NProgress options={{ OnRouteChange: true, showSpinner: false, trickle: true, trickleRate: 0.1 }} /> */}
         {/* <WebSocketProvider> */}
           <MainWsHandler history={history}>
             <WebrtcApp />
