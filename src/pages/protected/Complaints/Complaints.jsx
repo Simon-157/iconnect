@@ -40,6 +40,7 @@ const fetchUserIssues = async (userId, role) => {
 
 const Complaints = () => {
   const { user } = useContext(userContext);
+  console.log(user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(

@@ -10,6 +10,7 @@ import Analytics from './admin-ui/analytics/Analytics'
 import { Login,CalendarPage, HotLineRooms,HotLineRoom, Register,  Complaints, Reports, SubmitComplaint, Profile, PageNotFound, ComplaintDetails, People, LandingPage } from "./pages";
 
 import AssignedIssues from "./admin-ui/AssignedIssues/AssignedIssues";
+import Protected from "./pages/protected/Protected";
 
 function App() {
 
@@ -20,20 +21,23 @@ return (
         <div className='flex h-screen w-screen bg-app-background-1 overflow-hidden' >
             <Routes>
               <Route path={HOME} element={<LandingPage  />} />
-              <Route path={COMPLAINTS} element={<Complaints />} />
-              <Route path={ADDISSUE} element={<SubmitComplaint isDarkMode={isDarkMode} />} />
-              <Route path= {PROFILE} element={<Profile />} />
-              <Route path= {ROOM} element={<HotLineRoom/>} />
-              <Route path = {ROOMS} element = {<HotLineRooms />}/>
+              <Route path={SIMON} element={<Simon />} />
               <Route path={LOGIN} element={<Login />} />
               <Route path={REGISTER} element={<Register />} />
-              <Route path={SIMON} element={<Simon />} />
-              <Route path={ANALYTICS} element={<Analytics />} />
-              <Route path={CALENDAR} element={<CalendarPage />} />
-              <Route path={COMPLAINT} element={<ComplaintDetails />}/>
-              <Route path={ASSIGNED} element={<AssignedIssues />} />  
-              <Route path={PEOPLE} element={<People />} />
-              <Route path={REPORTS} element={<Reports />} />
+
+              <Route element={<Protected />}>
+                <Route path={ADDISSUE} element={<SubmitComplaint isDarkMode={isDarkMode} />} />
+                <Route path={PROFILE} element={<Profile />} />
+                <Route path={ROOM} element={<HotLineRoom/>} />
+                <Route path={ROOMS} element = {<HotLineRooms />}/>
+                <Route path={ANALYTICS} element={<Analytics />} />
+                <Route path={COMPLAINTS} element={<Complaints />} />
+                <Route path={CALENDAR} element={<CalendarPage />} />
+                <Route path={COMPLAINT} element={<ComplaintDetails />}/>
+                <Route path={ASSIGNED} element={<AssignedIssues />} />  
+                <Route path={PEOPLE} element={<People />} />
+                <Route path={REPORTS} element={<Reports />} />
+              </Route>
               <Route path={PAGENOTFOUND} element={<PageNotFound />} />
             </Routes>
       </div>
