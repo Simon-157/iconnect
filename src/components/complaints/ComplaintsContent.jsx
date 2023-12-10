@@ -133,6 +133,8 @@ const ComplaintsContent = ({ complaintData, onIssueUpdated, onIssueDeleted}) => 
 
   return (
     <div className="flex flex-shrink-0 flex-col gap-2 p-5">
+      {!complaintData && <SkeletonLoader />}
+      
       {complaintData?.length < 1 ? <p>you have no complaints raised yet</p>: 
       <><ComplaintsStatistics
           statistics={statistics}
@@ -260,3 +262,18 @@ const ComplaintsContent = ({ complaintData, onIssueUpdated, onIssueDeleted}) => 
 };
 
 export default ComplaintsContent;
+
+
+
+export const SkeletonLoader = () => {
+  return (
+    <div className="skeleton-loader">
+      <div className="skeleton-item header-animation" />
+      <div className="skeleton-item content-animation" />
+      <div className="skeleton-item content-animation" />
+      <div className="skeleton-item content-animation" />
+       <div className="skeleton-item content-animation" />
+    </div>
+  );
+};
+

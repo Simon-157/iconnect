@@ -11,6 +11,7 @@ import Loader from "../../../components/ui/Loader";
 import { api } from "../../../api";
 import { userContext } from "../../../contexts/UserContext";
 import AppSideBar from "../../../components/common/AppSideBar";
+import {SkeletonLoader} from "../../../components/complaints/ComplaintsContent";
 
 
 const fetchUserIssues = async (userId, role) => {
@@ -43,7 +44,7 @@ const Complaints = () => {
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(
     ['userIssues', user?.userId, user?.role],
-    () => fetchUserIssues(user?.userId, user?.role),
+    async () => await fetchUserIssues(user?.userId, user?.role),
     {
       enabled: !!user?.userId && !!user?.role,
       refetchOnWindowFocus: false,
@@ -92,7 +93,7 @@ const Complaints = () => {
   }
 
   if (isLoading) {
-    return <Loader bgColor="bg-app-brown" width={40} height={40} />;
+    return <SkeletonLoader />;
   }
 
   return (
@@ -100,10 +101,10 @@ const Complaints = () => {
       sidebar={<AppSideBar />}
       column={
         <ContentScrollable
-          nav1={<TopTagBar onSearch={handleSearch} />} // Pass handleSearch function
+          nav1={<TopTagBar onSearch={handleSearch} />} 
           content={
             <ComplaintsContent
-              complaintData={filteredIssues} // Use filteredIssues
+              complaintData={filteredIssues} 
               onIssueDeleted={handleIssueDeleted}
             />
           }
