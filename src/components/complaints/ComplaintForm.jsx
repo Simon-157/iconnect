@@ -8,8 +8,7 @@ import Loader from "../ui/Loader";
 import { userContext } from "../../contexts/UserContext";
 import { checkForSwearWords, validateFormData } from "../../utils/validation";
 import toast from "react-hot-toast";
-import useAzureBlobUploader from "../../hooks/useAzureBlobUploader";
-
+import useFirebaseStorage from "../../hooks/useStoragebucket";
 
 const ComplaintForm = () => {
   const { user: current_user } = useContext(userContext);
@@ -19,32 +18,27 @@ const ComplaintForm = () => {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
   const [emoji, setEmoji] = useState(null);
-
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [file, setFile] = useState(null);
 
-  // Azure Storage Connection Config
-  const connectionString = "BlobEndpoint=https://educaidblob.blob.core.windows.net/;QueueEndpoint=https://educaidblob.queue.core.windows.net/;FileEndpoint=https://educaidblob.file.core.windows.net/;TableEndpoint=https://educaidblob.table.core.windows.net/;SharedAccessSignature=sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-01-04T02:24:24Z&st=2023-11-30T18:24:24Z&spr=https&sig=O8GeVzH4M61t%2FL0jzKYWB29i5bdcbp3WRNnTEiO3mdQ%3D";
-  const containerName = "iconnect"
-  const token = "?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-01-04T02:24:24Z&st=2023-11-30T18:24:24Z&spr=https&sig=O8GeVzH4M61t%2FL0jzKYWB29i5bdcbp3WRNnTEiO3mdQ%3D"
-  const accountName = "educaidblob"
+  // Firebase Storage
+  const { imageUrl, uploadImage } = useFirebaseStorage();
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  const { uploadFile, fileUrl } = useAzureBlobUploader(connectionString, token, containerName);
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+    if (selectedFile) {
+      uploadImage(selectedFile);
+    }
+  };
 
+  const handleUpload = () => {
+    if (selectedFile) {
+      uploadImage(selectedFile);
+    }
 
-  const handleFileChange = async (e) => {
-  const selectedFile = e.target.files[0]; // Get the selected file
-  setFile(selectedFile); // Set the file state with the selected file
-
-  if (selectedFile) {
-    const uploadedUrl = await uploadFile(selectedFile); // Use the selected file for upload
-  } else {
-    console.error('No file selected.');
-  }
-};
-
-
+    console.log(imageUrl);
+  };
 
   const handleEmojiSelection = (emoji) => {
     setEmoji(emoji.native);
@@ -71,14 +65,20 @@ const ComplaintForm = () => {
     setPriority(e.target.value);
   };
 
-
   const createIssue = async () => {
     setIsSaving(true);
 
-    const isFormDataValid = validateFormData(subject, category, description, priority);
+    const isFormDataValid = validateFormData(
+      subject,
+      category,
+      description,
+      priority
+    );
 
     if (isFormDataValid) {
-      const hasSwearWords = await checkForSwearWords(`${subject} ${description}`);
+      const hasSwearWords = await checkForSwearWords(
+        `${subject} ${description}`
+      );
 
       if (!hasSwearWords) {
         try {
@@ -96,23 +96,32 @@ const ComplaintForm = () => {
           const response = await api.post("/api/issues/create", formData);
 
           if (response.data.success) {
-            toast.success("Issue created successfully", { duration: 3000, });
+            toast.success("Issue created successfully", { duration: 3000 });
             resetForm();
           } else {
-            toast.error("Error creating issue. Please try again later.", { duration: 3000, })
+            toast.error("Error creating issue. Please try again later.", {
+              duration: 3000,
+            });
             setIsSaving(false);
           }
         } catch (error) {
-          toast.error("Error creating issue. Please try again later.", { duration: 3000, });
+          toast.error("Error creating issue. Please try again later.", {
+            duration: 3000,
+          });
         } finally {
           setIsSaving(false);
         }
       } else {
-        toast.error("Swear words detected. Please remove them before submitting.", { duration: 3000, });
+        toast.error(
+          "Swear words detected. Please remove them before submitting.",
+          { duration: 3000 }
+        );
         setIsSaving(false);
       }
     } else {
-      toast.error("Invalid form data. Please check your inputs.", { duration: 3000, })
+      toast.error("Invalid form data. Please check your inputs.", {
+        duration: 3000,
+      });
       setIsSaving(false);
     }
   };
@@ -125,7 +134,6 @@ const ComplaintForm = () => {
     setAnonymous(false);
     setEmoji(null);
   };
-
 
   return (
     <div className="container mx-auto py-8 flex gap-8 overflow-y-auto">
@@ -224,7 +232,7 @@ const ComplaintForm = () => {
         <div className="mb-4">
           <input
             type="file"
-            // onChange={handleFileChange}
+            onChange={handleFileChange}
             className="border-gray-300 rounded p-2"
           />
         </div>
@@ -233,9 +241,12 @@ const ComplaintForm = () => {
           type="primary"
           className="flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white  hover:bg-app-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
           onClick={createIssue}
-
         >
-          {isSaving ? <Loader width={20} height={20} message={"checking..."} /> : "Submit"}
+          {isSaving ? (
+            <Loader width={20} height={20} message={"checking..."} />
+          ) : (
+            "Submit"
+          )}
         </ButtonM>
       </div>
 
@@ -273,16 +284,12 @@ const ComplaintForm = () => {
               <strong>Reactions:</strong> {emoji || "Not selected"}
             </p>
           </div>
-          {fileUrl && (
+          {imageUrl && (
             <div className="mb-4">
               <p className="text-gray-700">
                 <strong>Attached</strong>
               </p>
-              <img
-                src={fileUrl}
-                alt="Uploaded"
-                className="mt-2 rounded-md"
-              />
+              <img src={imageUrl} alt="Uploaded" className="mt-2 rounded-md" />
             </div>
           )}
         </div>
