@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
     }
     );
     
-    console.log('current user: ', user);
+    console.log('current user: ', user?.email);
   return (
     <userContext.Provider value={{ user, userLoading }}>
       {children}
