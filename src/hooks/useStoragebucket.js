@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/storage';
+import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD3dBKUl0_UnUit5XhDrOZ5pG6amqjI8xg",
@@ -11,9 +11,9 @@ const firebaseConfig = {
   appId: "1:910991037902:web:0d506e3a0bd93519eb079f"
 };
 
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
-firebase.initializeApp(firebaseConfig);
-const storage = firebase.storage();
 
 const useFirebaseStorage = () => {
   const [imageUrl, setImageUrl] = useState('');
