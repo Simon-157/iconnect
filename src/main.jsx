@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
@@ -24,7 +24,7 @@ const ReactQueryDevtoolsProduction = React.lazy(() =>
 
 const history = createBrowserHistory();
 const queryClient = new QueryClient();
-  const [showDevtools, setShowDevtools] = React.useState(false)
+  const [showDevtools, setShowDevtools] = useState(false)
 
   React.useEffect(() => {
     // @ts-ignore
