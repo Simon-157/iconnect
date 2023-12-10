@@ -109,10 +109,12 @@ const IssueDetailedContent = ({ issue }) => {
                                     </p>
                                     
                                 </div>
-                                <div className="h-[100px]">
+                                <div className="flex justify-center items-center flex-col p-5">
 
-                                    <p className="m-5 text-gray-800">{issue?.description}</p>
-
+                                    <p className=" text-gray-800">{issue?.description}</p>
+                                    {issue?.attachment_url &&
+                                    <img width={300} height={300} src={issue?.attachment_url ?? ""}/>   
+                                    }
                                 </div>
                             </div>
                         </div>
