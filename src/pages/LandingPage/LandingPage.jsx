@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import AppDialog from '../../components/ui/AppDialog';
 import heroImg from '../../assets/hero2.svg'
 import { Logo } from '../../components/ui/Logo';
 import Login from '../auth/Login';
-
+import { userContext } from '../../contexts/UserContext';
+import {Link} from 'react-router-dom';
 
 const LandingPage = () => {
     const [loginModalVisible, setLoginModalVisible] = useState(false)
+    const {user} = useContext(userContext);
 
     const openLoginModal = () => {
         setLoginModalVisible(true);
@@ -35,9 +37,14 @@ const LandingPage = () => {
                         <span className='cursor-pointer'>Home</span>
                         <span className='cursor-pointer'>About</span>
                         <span className='cursor-pointer'>Help</span>
-                        <button className="font-semibold text-app-brown rounded-lg px-10 p-2" onClick={openLoginModal}>
+                        {user ? (
+                            <Link to="/complaints" className="font-semibold text-app-brown rounded-lg px-10 p-2 " >Dashboard</Link>
+                        ):
+                       ( <button className="font-semibold text-app-brown rounded-lg px-10 p-2" onClick={openLoginModal}>
                             Login
-                        </button>
+                        </button>)
+                        
+                        }
                     </div>
                 </nav>
                 <section className=" w-full p-20 app-background-1 flex  items-center justify-center  h-[800px]">

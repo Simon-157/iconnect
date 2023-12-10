@@ -7,7 +7,7 @@ export default {
     extend: {
       colors: {
         "app-green": "#6CD6DE6B",
-        "app-brown":"#A82F2F",
+        "app-brown":"#742a2a",
         "app-hover-green": "#6B3333A2C4",
         "app-yellow": "#fae4ad",
         "app-gray": "rgba(255, 255, 255, 0.65)",
