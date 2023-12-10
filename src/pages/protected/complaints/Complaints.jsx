@@ -23,10 +23,10 @@ const fetchUserIssues = async (userId, role) => {
         endpoint = '/api/issues/';
         break;
       case 'resolver':
-        endpoint = `/api/issues/department/${userId}`;
+        endpoint = `/api/issues/department/2`;
         break;
       default:
-        endpoint = `/api/issues/user/${userId}`;
+        endpoint = `/api/issues/user/2`;
     }    
 
     const response = await api.get(endpoint);
