@@ -42,7 +42,7 @@ const Complaints = () => {
   // const { user, userLoading } = useContext(userContext);
   const { data: user } = useQuery("curruser", async () => await api.get("/user"))
 
-  console.log("user", user?.data)
+  console.log("user", user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(

@@ -1,7 +1,6 @@
 import React, { createContext } from 'react';
 import { useQuery } from 'react-query';
 import { api } from '../api';
-import axios from 'axios';
 
 const userContext = createContext({ user: {}, userLoading: true });
 
@@ -10,7 +9,7 @@ const UserProvider = ({ children }) => {
     'user',
     async () => {
       try {
-        const { data: user } = await axios.get("https://ashesiiconnect.azurewebsites.net/user");
+        const { data: user } = await api.get("/user");
         return user;
       } catch (error) {
         console.error('Error fetching user:', error);

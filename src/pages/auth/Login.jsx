@@ -7,7 +7,7 @@ import google from "../../assets/google.png"
 import office from "../../assets/office.jpeg"
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { baseUrl } from "../../api";
+import { baseURL } from "../../api";
 
 const width = 400;
 const height = 500;
@@ -30,12 +30,12 @@ const Login = () => {
 
     const googleLogin = () => {
         myDevice == "isDesktop"
-        ? window.open(`${baseUrl}/auth/google `,"",
+        ? window.open(`${baseURL}/auth/google `,"",
             `toolbar=no, location=no, directories=no, status=no, menubar=no, 
     scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
     height=${height}, top=${top}, left=${left}`
             )
-        : window.location.replace(`${baseUrl}/auth/google`);
+        : window.location.replace(`${baseURL}/auth/google`);
     };
 
 
@@ -44,14 +44,14 @@ const Login = () => {
     const officeLogin = () => {
         myDevice === "isDesktop"
             ? window.open(
-                  `${`${baseUrl}/auth/microsoft`}`,
+                  `${`${baseURL}/auth/microsoft`}`,
                   "",
                   `toolbar=no, location=no, directories=no, status=no, menubar=no, 
                   scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
                   height=${height}, top=${top}, left=${left}`
               )
             : window.location.replace(
-                  `${baseUrl}/auth/microsoft`
+                  `${baseURL}/auth/microsoft`
               );
     };
 
