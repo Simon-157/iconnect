@@ -45,11 +45,13 @@ import {
   Protected,
 } from "./pages";
 import AdminProtected from "./pages/protected/admin/AdminProtected";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <div className="flex h-screen w-screen bg-app-background-1 overflow-hidden">
+      <UserProvider>
       <Routes>
         <Route element={<Protected />}>
           <Route
@@ -77,6 +79,8 @@ function App() {
         <Route path={REGISTER} element={<Register />} />
         <Route path={PAGENOTFOUND} element={<PageNotFound />} />
       </Routes>
+
+      </UserProvider>
     </div>
   );
 }
