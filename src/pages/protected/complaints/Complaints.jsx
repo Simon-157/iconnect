@@ -93,8 +93,13 @@ const Complaints = () => {
     return <div>Error fetching user issues</div>;
   }
 
-  if (isLoading) {
-    return <SkeletonLoader />;
+  if (isLoading || userLoading) {
+
+    return <Loader width={30} height={30} bgColor={'grey'} />;
+  }
+
+  if (!issueData) {
+    return <div>No issues found</div>;
   }
 
   return (
