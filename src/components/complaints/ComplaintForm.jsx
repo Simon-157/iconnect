@@ -20,9 +20,8 @@ const ComplaintForm = () => {
   const [emoji, setEmoji] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-
   // Firebase Storage
-  const { imageUrl, uploadImage } = useFirebaseStorage();
+  const { imageUrl,imageUrlLoading, uploadImage } = useFirebaseStorage();
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -88,7 +87,7 @@ const ComplaintForm = () => {
             title: subject,
             anonymous,
             description,
-            attachment_url: "",
+            attachment_url: imageUrl,
             status: "open",
             priority,
           };
@@ -230,6 +229,9 @@ const ComplaintForm = () => {
         </div>
 
         <div className="mb-4">
+          {
+            imageUrlLoading  ? <Loader width={20} height={20} message={"uploading..."} bgColor={"#742a2a"}/> : "upload  "
+          }
           <input
             type="file"
             onChange={handleFileChange}
