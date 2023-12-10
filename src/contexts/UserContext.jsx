@@ -5,21 +5,23 @@ import { api } from '../api';
 const userContext = createContext({ user: {}, userLoading: true });
 
 const UserProvider = ({ children }) => {
-  const getUser = async () => {
-    try {
-      const { data: user } = await api.get('/user');
-      console.log(user)
-      return user;
-    } catch (error) {
-      // Handle errors here
-      console.error('Error fetching user:', error);
+  const { data: user, isLoading: userLoading } = useQuery(
+    'user',
+    async () => {
+      try {
+        const { data: user } = await api.get('/user');
+        console.log('current user: ', user);
+        return user;
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        throw error;
+      }
+    },
+    {
+      staleTime: 300000,
+      refetchOnWindowFocus: false,
     }
-  };
-
-  const { data: user, isLoading: userLoading } = useQuery('user', getUser, {
-    staleTime: 300000,
-    refetchOnWindowFocus: false,
-  });
+  );
 
   return (
     <userContext.Provider value={{ user, userLoading }}>
