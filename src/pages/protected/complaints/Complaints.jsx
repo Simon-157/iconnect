@@ -23,10 +23,10 @@ const fetchUserIssues = async (userId, role) => {
         endpoint = '/api/issues/';
         break;
       case 'resolver':
-        endpoint = `/api/issues/department/2`;
+        endpoint = `/api/issues/department/${userId}`;
         break;
       default:
-        endpoint = `/api/issues/user/2`;
+        endpoint = `/api/issues/user/${userId}`;
     }    
 
     const response = await api.get(endpoint);
@@ -39,9 +39,7 @@ const fetchUserIssues = async (userId, role) => {
 
 
 const Complaints = () => {
-  // const { user, userLoading } = useContext(userContext);
-  const { data: user } = useQuery("curruser", async () => await api.get("/user"))
-
+  const { user, userLoading } = useContext(userContext);
   console.log("user", user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
