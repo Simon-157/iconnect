@@ -39,8 +39,10 @@ const fetchUserIssues = async (userId, role) => {
 
 
 const Complaints = () => {
-  const { user, userLoading } = useContext(userContext);
-  console.log(user)
+  // const { user, userLoading } = useContext(userContext);
+  const { data: user } = useQuery("curruser", async () => axios.get("https://ashesiiconnect.azurewebsites.net/user"))
+
+  console.log("user", user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(
