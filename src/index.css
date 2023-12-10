@@ -90,6 +90,40 @@ body{
   overflow: hidden;
 }
 
+
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+
+ 
+}
+
+.skeleton-item {
+  height: 20px; 
+  border-radius: 4px;
+  background-color: #f0f0f0; 
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.header-animation {
+  width: 70%;
+  animation: loadingAnimation 1.5s ease-in-out infinite;
+}
+
+.content-animation {
+  width: 100%;
+  animation: loadingAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.6; }
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     /* color: rgb(1, 2, 4); */
