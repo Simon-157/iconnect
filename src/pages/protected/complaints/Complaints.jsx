@@ -95,7 +95,7 @@ const Complaints = () => {
     return <div>Error fetching user issues</div>;
   }
 
-  if (isLoading || userLoading) {
+  if (isLoading || !user) {
 
     return <Loader width={30} height={30} bgColor={'grey'} />;
   }
