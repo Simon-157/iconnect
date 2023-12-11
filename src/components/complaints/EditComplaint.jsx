@@ -23,6 +23,7 @@ const EditComplaint = ({onIssueUpdated, priority, issueId, issueTitle, issueDesc
       onSuccess: () => {
         queryClient.invalidateQueries('userIssues');
         toast.success('Issue updated successfully');
+        closeModal();
       },
       onError: (error) => {
         toast.error(error.response?.data?.message || 'Can\'t update issue at the moment');

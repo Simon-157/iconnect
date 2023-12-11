@@ -52,9 +52,17 @@ const ComplaintForm = () => {
     setCategory(e.target.value);
   };
 
+
   const handleSubjectChange = (e) => {
-    setSubject(e.target.value);
-  };
+  const inputText = e.target.value;
+  if (inputText.length <= 50) {
+    setSubject(inputText);
+  } else {
+    setSubject(inputText.slice(0, 50));
+    toast.error("Subject should not exceed 50 characters, will be truncated", { duration: 3000 });
+  }
+};
+
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -91,6 +99,7 @@ const ComplaintForm = () => {
             status: "open",
             priority,
           };
+
 
           const response = await api.post("/api/issues/create", formData);
 
