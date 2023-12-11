@@ -184,12 +184,12 @@ const ComplaintForm = () => {
 
         <div className="mb-4 text-lg">
           <div className="mb-4 text-lg shadow-card_shadow">
-            <Input
+            <input
               type="text"
               value={subject}
               onChange={handleSubjectChange}
               placeholder="Subject"
-              className="block w-full border-gray-300 rounded p-2"
+              className="block w-full border-gray-300 rounded  p-2 focus:none"
             />
           </div>
           <select
