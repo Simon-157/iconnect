@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { api } from '../../api';
 import toast from 'react-hot-toast';
+import { userContext } from '../../contexts/UserContext';
 
 const IssueAssignee = ({privacy, category_name, issueId, assignees, availableResolvers }) => {
+
+  const {user}=useContext(userContext)
    
   const assign = async ({resolverId}) =>{
     try {
@@ -47,11 +50,12 @@ const IssueAssignee = ({privacy, category_name, issueId, assignees, availableRes
         <ul>
           {availableResolvers?.map((resolver) => (
             <li key={resolver.resolver_id} className="mb-2">
-              {resolver.display_name} - {resolver.email}
-              <button className="ml-2 px-3 py-1 bg-slate-500 text-white rounded-md" onClick={() => assign({resolverId: resolver.resolver_id})}>
-                
-                Assign
-              </button>
+              {resolver.display_name}
+              { user.role !== "student" &&
+                <button className="ml-2 px-3 py-1 bg-slate-500 text-white rounded-md" onClick={() => assign({resolverId: resolver.resolver_id})}> 
+                  Assign
+                </button>
+              }
             </li>
           ))}
         </ul>
