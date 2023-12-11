@@ -41,7 +41,7 @@ const GoogleMap = ({ place }) => {
         });
       };
 
-      geocodePlace("Fab Lab 203");
+      geocodePlace(place);
     });
   }, [place]);
 

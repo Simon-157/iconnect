@@ -31,7 +31,7 @@ const ComplaintDetails = () => {
   console.log(categoryResolvers)
   const pinCoordinates = [5.75763, 0.22118];
   console.log(issueDetails?.issue?.location)
-  const place = { name: issueDetails?.issue?.location };
+  const place = issueDetails?.issue?.location ?? "Ashesi University";
   return (
     <AppLayout
       sidebar={<AppSideBar />}
