@@ -16,9 +16,10 @@ import { userContext } from "../../../contexts/UserContext";
 import { capitalizeInitials } from "../../../utils/functions";
 import AppDialog from "../../../components/ui/AppDialog";
 import UpdateAvatar from "./UpdateProfileImage";
+import { useQueryClient } from "react-query";
 
 const Profile = () => {
-
+    const queryClient = useQueryClient();
     const handleIssueDeleted = useCallback(() => {
     queryClient.invalidateQueries('user');
   }, [queryClient]);

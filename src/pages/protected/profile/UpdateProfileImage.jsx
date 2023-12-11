@@ -11,6 +11,7 @@ const UpdateAvatar = ({userId, closeUpdateConfirmation }) => {
   const queryClient = useQueryClient();
   const {imageUrl, imageUrlLoading, uploadImage} = useFirebaseStorage();
 
+
   const updateAvatarMutation = useMutation(
     async (userId) => {
       const response = await api.patch(`/api/user/${userId}/avatar`,{ avatarUrl: imageUrl });
