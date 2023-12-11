@@ -14,6 +14,7 @@ import { checkForSwearWords, validateFormData } from "../../utils/validation";
 import useFirebaseStorage from "../../hooks/useStoragebucket";
 
 
+const libraries = ['places'];
 const ComplaintForm = () => {
   const { user: current_user } = useContext(userContext);
   const [anonymous, setAnonymous] = useState(false);

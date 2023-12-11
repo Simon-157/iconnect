@@ -15,7 +15,7 @@ import {SkeletonLoader} from "../../../components/complaints/ComplaintsContent";
 
 
 const fetchUserIssues = async (userId, role) => {
-  console.log(userId, role);
+ 
   try {
     let endpoint = '';
     switch (role) {
@@ -40,7 +40,6 @@ const fetchUserIssues = async (userId, role) => {
 
 const Complaints = () => {
   const { user, userLoading } = useContext(userContext);
-  console.log("user", user)
   const [searchTerm, setSearchTerm] = useState('');
   const queryClient = useQueryClient();
   const { data: issueData, isLoading, isError, refetch } = useQuery(
