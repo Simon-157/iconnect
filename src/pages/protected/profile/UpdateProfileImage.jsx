@@ -20,7 +20,7 @@ const UpdateAvatar = ({userId, closeUpdateConfirmation }) => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries('user');
-        toast.success(response.data.message);
+        toast.success('Avatar updated successfully');
         closeUpdateConfirmation();
       },
       onError: (error) => {
@@ -39,12 +39,25 @@ const UpdateAvatar = ({userId, closeUpdateConfirmation }) => {
     }
   }
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     updateAvatarMutation.mutate(userId);
+    await closeUpdateConfirmation();
   };
 
   return (
     <div className="flex flex-col space-y-4 bg-app-background-1 text-app-white p-5">
+        <div className='flex justify-center p-5'>
+
+            {imageUrl && (
+                <img
+                src={imageUrl}
+                alt="profile"
+                width={100}
+                height={100}
+                className="rounded-full border-solid border-2 border-blue-300"
+                />
+            )}
+        </div>
      <Input type="file" onChange={handleAvatarChange} className='' />
       <div className="flex justify-end space-x-2">
         <ButtonM
