@@ -12,6 +12,7 @@ import AppDialog from '../ui/AppDialog';
 import CloseIssue from './CloseIssue';
 
 const IssueDetailedContent = ({ issue }) => {
+    console.log("issue, ", issue)
     const { user: current_user } = useContext(userContext);
     const isAdmin = current_user?.role === 'administrator';
     const [closeIssueVisible, setCloseIssueVisible] = useState(false);
