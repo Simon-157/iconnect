@@ -58,6 +58,7 @@
     "react-to-print": "^2.14.15",
     "recharts": "^2.10.1",
     "socket.io-client": "^4.7.2",
+    "three": "^0.159.0",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
