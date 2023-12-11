@@ -31,7 +31,7 @@ const ComplaintForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLEMAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
