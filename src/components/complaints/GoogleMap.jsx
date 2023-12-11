@@ -5,7 +5,7 @@ const GoogleMap = ({ place }) => {
 
   useEffect(() => {
     const googleMapScript = document.createElement('script');
-    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places`;
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDlV1SphAlw5YPrtcAOFJRNWvSR4LC21CU&libraries=places`;
     window.document.body.appendChild(googleMapScript);
 
     googleMapScript.addEventListener('load', () => {
