@@ -1,14 +1,18 @@
 import { useContext, useState } from "react";
+import EmojiPicker from "emoji-picker-react";
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+import toast from "react-hot-toast";
+
+// components
 import ButtonM from "../ui/ButtonM";
 import Input from "../ui/Input";
-import EmojiPicker from "emoji-picker-react";
 import { categories } from "../hotline-room/hotline-feed/Constants";
 import { api } from "../../api";
 import Loader from "../ui/Loader";
 import { userContext } from "../../contexts/UserContext";
 import { checkForSwearWords, validateFormData } from "../../utils/validation";
-import toast from "react-hot-toast";
 import useFirebaseStorage from "../../hooks/useStoragebucket";
+
 
 const ComplaintForm = () => {
   const { user: current_user } = useContext(userContext);
@@ -20,14 +24,21 @@ const ComplaintForm = () => {
   const [emoji, setEmoji] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [location, setLocation] = useState("");
   // Firebase Storage
   const { imageUrl,imageUrlLoading, uploadImage } = useFirebaseStorage();
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (e) => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLEMAPS_API_KEY,
+    libraries,
+  });
+
+
+  const handleFileChange = async (e) => {
     setSelectedFile(e.target.files[0]);
     if (selectedFile) {
-      uploadImage(selectedFile);
+      await uploadImage(selectedFile);
     }
   };
 
@@ -35,7 +46,6 @@ const ComplaintForm = () => {
     if (selectedFile) {
       uploadImage(selectedFile);
     }
-
     console.log(imageUrl);
   };
 
@@ -98,6 +108,7 @@ const ComplaintForm = () => {
             attachment_url: imageUrl,
             status: "open",
             priority,
+            location: location ?? null,
           };
 
 
@@ -134,6 +145,13 @@ const ComplaintForm = () => {
     }
   };
 
+
+  const handleLocationChange = (e)=>{
+    setLocation(e.target.value);
+    console.log(location)
+  }
+
+
   const resetForm = () => {
     setSubject("");
     setDescription("");
@@ -141,7 +159,10 @@ const ComplaintForm = () => {
     setCategory(1);
     setAnonymous(false);
     setEmoji(null);
+    setLocation("")
   };
+
+
 
   return (
     <div className="container mx-auto py-8 flex gap-8 overflow-y-auto">
@@ -184,6 +205,24 @@ const ComplaintForm = () => {
               );
             })}
           </select>
+           {isLoaded ? (
+            <Autocomplete>
+              <Input
+                required
+                value={location}
+                onChange={handleLocationChange}
+                className="rounded-xl h-12 text-md pl-10 pr-4"
+                type="text"
+                placeholder="location"
+              />
+            </Autocomplete>
+          ) : (
+            <Input
+              className="rounded-xl h-12 text-md pl-10 pr-4"
+              type="text"
+              placeholder="location"
+            />
+          )}
         </div>
 
         <div className="mb-4">

@@ -24,6 +24,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@react-google-maps/api": "^2.19.2",
     "@uiw/react-md-editor": "^4.0.1",
     "axios": "^1.6.2",
     "azure-maps-control": "^3.0.2",
