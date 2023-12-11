@@ -42,14 +42,14 @@ const Profile = () => {
         sidebar={<AppSideBar />}
         column={
           <>
-            <ProfileContent current_user={current_user} />
+            <ProfileContent current_user={current_user} openModal={openUpdateConfirmation} />
             <AppDialog
               defaultOpen={updateConfirmationVisible}
               open={updateConfirmationVisible}
               setOpenChange={closeUpdateConfirmation}
               content={
                 <>
-                  <UpdateAvatar userId={current_user?.userId} closeUpdateConfirmation={closeUpdateConfirmation} openModal={openUpdateConfirmation}/>
+                  <UpdateAvatar userId={current_user?.userId} closeUpdateConfirmation={closeUpdateConfirmation} />
                 </>
               }
             ></AppDialog>
