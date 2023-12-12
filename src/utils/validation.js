@@ -23,3 +23,30 @@ export const checkForSwearWords = async (text) => {
 
 //   return false; // Swear word not detected or error occurred
 };
+
+
+
+
+export const validateEmail = async (email) => {
+  if (!email.trim()) {
+    return false;
+  }
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+};
+
+export const validatePassword = async (password) => {
+  if (!password.trim()) {
+    return false;
+  }
+  return password.length >= 8 && /\d/.test(password);
+};
+
+
+export const validateFirstName = async (firstName) => {
+  return !!firstName.trim(); 
+};
+
+export const validateLastName = async (lastName) => {
+  return !!lastName.trim(); 
+};

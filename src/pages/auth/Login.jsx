@@ -1,4 +1,8 @@
 import React, { useContext, useState } from "react";
+import {Mail, Eye} from "lucide-react"
+
+
+// components
 import AuthFieldsContainer from "../../components/auth/AuthFieldsContainer";
 import Input from "../../components/ui/Input";
 import { Logo } from "../../components/ui/Logo";
@@ -9,18 +13,47 @@ import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
 import { baseURL } from "../../api";
 import AnimateSection from "../../components/auth/AnimateSection";
+import { validateEmail, validatePassword } from "../../utils/validation";
+import toast from "react-hot-toast";
 
 const width = 400;
 const height = 500;
 
 const Login = () => {
-  const [inputValue, setInputValue] = useState("");
-  const { conn } = useContext(WebSocketContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+ const { conn } = useContext(WebSocketContext);
   const myDevice = useScreenType();
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+
+    const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+const handleLogin = async () => {
+  const isValidEmail = await validateEmail(email);
+  const isValidPassword = await validatePassword(password);
+
+  if (!isValidEmail) {
+    toast.error("Invalid email");
+    return;
+  }
+  if (!isValidPassword) {
+    toast.error("Invalid password");
+    return;
+  }
+
+  const userData = {
+    email,
+    password,
+  };
+}
+
+
 
   const left =
     typeof window !== "undefined" && window.innerWidth / 2 - width / 2;
@@ -79,23 +112,25 @@ const Login = () => {
               <h3>Email Address</h3>
               <Input
                 placeholder=""
-                value={inputValue}
-                onChange={handleInputChange}
+                value={email}
+                onChange={handleEmailChange}
+                icon={<Mail />}
               />
             </div>
             <div className="flex flex-col gap-2">
               <h3>Password</h3>
               <Input
                 placeholder=""
-                value={inputValue}
+                value={password}
                 type={"password"}
-                onChange={handleInputChange}
+                onChange={handlePasswordChange}
               />
             </div>
             <div className="flex flex-col gap-2">
               <ButtonM
                 type="primary"
                 className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
+                onClick={handleLogin}
               >
                 Login
               </ButtonM>

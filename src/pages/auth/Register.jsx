@@ -1,84 +1,257 @@
+import React, { useContext, useState } from "react";
+import { Mail, Eye } from "lucide-react";
 
-
-import React, { useState } from "react";
+// components
 import AuthFieldsContainer from "../../components/auth/AuthFieldsContainer";
 import Input from "../../components/ui/Input";
 import { Logo } from "../../components/ui/Logo";
-import google from "../../assets/google.png"
 import ButtonM from "../../components/ui/ButtonM";
+import google from "../../assets/google.png";
+import office from "../../assets/office.jpeg";
+import useScreenType from "../../hooks/useScreenType";
+import { WebSocketContext } from "../../contexts/WebsocketContext";
+import { baseURL } from "../../api";
+import AnimateSection from "../../components/auth/AnimateSection";
+import {
+  validateEmail,
+  validateFirstName,
+  validateLastName,
+  validatePassword,
+} from "../../utils/validation";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
+const width = 400;
+const height = 500;
 
 const Register = () => {
-    const [inputValue, setInputValue] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { conn } = useContext(WebSocketContext);
+  const myDevice = useScreenType();
+  const navigate = useNavigate()
 
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value);
+  const handleFirstNameChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleRegister = async () => {
+    const isValidEmail = await validateEmail(email);
+    const isValidPassword = await validatePassword(password);
+    const validFName = await validateFirstName(firstName);
+    const validLName = await validateLastName(lastName);
+
+    if (!isValidEmail) {
+      toast.error("Invalid email");
+      return;
+    }
+    if (!isValidPassword) {
+      toast.error("Invalid password");
+      return;
+    }
+
+    if (!validFName) {
+      toast.error("First Name cannot be empty");
+      return;
+    }
+    if (!validLName) {
+      toast.error("Last Name cannot be empty");
+      return;
+    }
+
+    const userData = {
+      email,
+      password,
+      displayName: `${firstName} ${lastName}`,
     };
 
-    return (
-        <div className="bg-app-background-1 w-screen h-screen flex justify-center place-content-center items-center">
-            <AuthFieldsContainer>
-                <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
-                    <h2 className="text-app-white text-2xl">Get Started With Ashesi iConnect</h2>
-                    <Logo width={120} />
-                </div>
-                <div className="p-5 flex gap-3">
-                    <div className="flex flex-col gap-2">
-                        <h3 className="text-app-white">First Name</h3>
-                        <Input
-                            placeholder=""
-                            value={inputValue}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+    try {
+        const res = await api.post("/auth/local/signup", userData);
+        console.log(res?.data?.user)
+        toast.success(res?.data?.message);
+        navigate("/login")
+    } catch (error) {
+        console.error(error)
+        
+    }
+  };
 
-                    <div className="flex flex-col gap-2">
-                        <h3 className="text-app-white">Last Name</h3>
-                        <Input
-                            placeholder=""
-                            value={inputValue}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                </div>
-                <div className="pl-5  pr-5 flex flex-col gap-2">
-                    <h3 className="text-app-white">Password </h3>
-                    <Input
-                        placeholder=""
-                        value={inputValue}
-                        type={'password'}
-                        onChange={handleInputChange}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div className="p-5 flex flex-col gap-2">
-                    <h3 className="text-app-white">Email Address </h3>
-                    <Input
-                   
-                        value={inputValue}
-                        onChange={handleInputChange}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div className="p-5 flex flex-col gap-2">
-                    <ButtonM type="primary" className={`text-lg text-app-white bg-input-bg-color  hover:bg-app-hover-green flex justify-center`}>Register</ButtonM>
-                </div>
-                <div className="p-5 flex gap-10 justify-between items-center">
+  const left =
+    typeof window !== "undefined" && window.innerWidth / 2 - width / 2;
+  const top =
+    typeof window !== "undefined" && window.innerHeight / 2 - height / 2;
 
-                    <ButtonM type="primary"  className={`p-5 bg-input-bg-color`} icon={<img src={google} height={20} width={20} alt="Google Icon" />}>
-                        Continue with Google
-                    </ButtonM>
-                        <span>OR</span>
-                    <ButtonM type="primary" className={`p-5 bg-input-bg-color`} icon={<img src={google} height={20} width={20} alt="Google Icon" />}>
-                        Continue with facebook 
-                    </ButtonM>
- 
-                </div>
-                 <div className="text-sm text-center pb-2 text-gray-400">
-                        Already have an account yet? <span className=" cursor-pointer  text-app-green   "> Login</span>
-                </div>
-            </AuthFieldsContainer>
+  const googleLogin = () => {
+    myDevice === "isDesktop"
+      ? window.open(
+          `${baseURL}/auth/google `,
+          "",
+          `toolbar=no, location=no, directories=no, status=no, menubar=no, 
+          scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
+          height=${height}, top=${top}, left=${left}`
+        )
+      : window.location.replace(`${baseURL}/auth/google`);
+  };
+
+  const officeLogin = () => {
+    myDevice === "isDesktop"
+      ? window.open(
+          `${`${baseURL}/auth/microsoft`}`,
+          "",
+          `toolbar=no, location=no, directories=no, status=no, menubar=no, 
+          scrollbars=no, resizable=no, copyhistory=no, width=${width}, 
+          height=${height}, top=${top}, left=${left}`
+        )
+      : window.location.replace(`${baseURL}/auth/microsoft`);
+  };
+
+  return (
+    <div className="flex flex-col md:flex-row justify-center items-center w-full">
+      <section className="w-full md:w-1/2 h-screen relative overflow-hidden">
+        {/* Background image and AnimateSection */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url("/courtyard.png")',
+          }}
+        >
+          <AnimateSection />
         </div>
-    );
+      </section>
+      <section className="w-full md:w-1/2 flex justify-center items-center">
+        {/* Login form */}
+        <AuthFieldsContainer classNames="w-full max-w-md mx-auto px-4">
+          <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
+            <h2 className="text-app-white text-2xl font-semibold">
+              Log in to Ashesi iConnect
+            </h2>
+            <Logo width={120} />
+          </div>
+
+          <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
+            <h2 className="text-app-white text-2xl">
+              Get Started With Ashesi iConnect
+            </h2>
+            <Logo width={120} />
+          </div>
+          <div className="p-5 flex gap-3">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-app-white">First Name</h3>
+              <Input
+                placeholder=""
+                value={firstName}
+                onChange={handleFirstNameChange}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h3 className="text-app-white">Last Name</h3>
+              <Input
+                placeholder=""
+                value={lastName}
+                onChange={handleLastNameChange}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-5 p-5">
+            <div className="flex flex-col gap-2">
+              <h3>Email Address</h3>
+              <Input
+                placeholder=""
+                value={email}
+                onChange={handleEmailChange}
+                icon={<Mail />}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3>Password</h3>
+              <Input
+                placeholder=""
+                value={password}
+                type={"password"}
+                onChange={handlePasswordChange}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h3>Confirm Password</h3>
+              <Input
+                placeholder=""
+                value={password}
+                type={"password"}
+                onChange={handleConfirmPasswordChange}
+              />
+              {password !== confirmPassword && (
+                <span className="text-red-500 text-xs">password do not match</span>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <ButtonM
+                type="primary"
+                className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
+                onClick={handleLogin}
+              >
+                Login
+              </ButtonM>
+            </div>
+            <div className="text-lg text-center text-gray-700">
+              Continue with your socials
+            </div>
+            <div className="flex justify-between items-center">
+              <ButtonM
+                onClick={() => {
+                  googleLogin();
+                }}
+                type="primary"
+                className="p-5 bg-gray-200 text-black text-xs"
+                icon={
+                  <img src={google} height={20} width={20} alt="Google Icon" />
+                }
+              >
+                Google login
+              </ButtonM>
+              <span>OR</span>
+              <ButtonM
+                onClick={() => {
+                  officeLogin();
+                }}
+                type="primary"
+                className="p-5 bg-gray-200 text-black text-xs"
+                icon={
+                  <img src={office} height={20} width={20} alt="Google Icon" />
+                }
+              >
+                Office login
+              </ButtonM>
+            </div>
+            <div className="text-sm text-center text-gray-400">
+              Don't have an account yet?{" "}
+              <span className="cursor-pointer text-red-900">Register</span>
+            </div>
+          </div>
+        </AuthFieldsContainer>
+      </section>
+    </div>
+  );
 };
 
 export default Register;

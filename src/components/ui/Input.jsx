@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Mail, Eye, EyeOff } from 'lucide-react'; // Eye and EyeOff icons
 
-const Input = ({ onChange, value, placeholder, style, type, classNames,children }) => {
+const Input = ({ onChange, value, placeholder, style, type, classNames, icon }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
-    <input
-      className={`rounded-lg shadow-card_shadow p-3 bg-app-background-1 text-app-black focus:outline-none ${classNames}`}
-      style={style}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    >{children}</input>
+    <div className="relative">
+      <input
+        className={`rounded-lg shadow-card_shadow p-3 text-app-white bg-input-bg-color focus:outline-none pl-3 ${classNames}`}
+        style={style}
+        type={showPassword ? 'text' : type} 
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+      {type === 'password' && ( 
+        <span
+          className="absolute inset-y-0 right-2 flex items-center pl-3 pointer-events-auto cursor-pointer"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? <Eye /> : <EyeOff />}
+        </span>
+      )}
+      {icon && (
+        <span className="absolute inset-y-0 right-2 flex items-center pl-3 pointer-events-none">
+          {icon}
+        </span>
+      )}
+    </div>
   );
 };
 
