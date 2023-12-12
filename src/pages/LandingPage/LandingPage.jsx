@@ -32,7 +32,7 @@ const LandingPage = () => {
         <div className='flex items-center gap-6 text-app-white'>
           <span className='cursor-pointer'>About</span>
           <span className='cursor-pointer'>Help</span>
-          {user ? (
+          {user && user != {}? (
             <Link to='/complaints' className='font-semibold text-app-brown rounded-lg px-10 p-2'>
               Dashboard
             </Link>

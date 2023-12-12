@@ -5,10 +5,25 @@ import { DASHBOARD, HOME, COMPLAINTS, ROOMS } from "../../utils/Routes";
 import { useNavigate } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 import { userContext } from "../../contexts/UserContext";
+import { api } from "../../api";
+import toast from "react-hot-toast";
 
 export const SideNav = ({ profile, tabIcons, routes }) => {
+  const navigate = useNavigate();
   const {user:auth_user} = useContext(userContext)
   const [activeTab, setActiveTab] = useState(0);
+  const handleLogout = async () => {
+    try {
+      const res = await api.get('/auth/logout')
+      toast.success(res.data.message, duration=30000)
+      navigate(HOME)
+    } catch (error) {
+      toast.error("Something went wrong")
+    }
+    
+  }
+
+
   return (
     <div className="text-white py-5 bg-app-background-2 w-[50px] sticky bottom-0 h-screen max-h-screen shadow-app_shadow flex flex-col items-center justify-between">
       <div className="flex flex-col item-center w-full justify-center">
@@ -36,10 +51,11 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
           }}
         />
         <TabButton
-          icon={<LogOut size={20} className="text-app-white group-active:scale-90 transition-all duration-50 ease-in" />}
+          icon={<LogOut size={20} className="text-app-white group-active:scale-90 transition-all duration-50 ease-in" onClick={handleLogout}/>}
           index={tabIcons?.length}
           isActive={activeTab == tabIcons?.length}
           setActiveTab={setActiveTab}
+          name = "logout"
         />
       </div>
     </div>
