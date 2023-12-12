@@ -78,7 +78,7 @@ const LandingPage = () => {
           )}
         </div>
       </nav>
-      <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center lg:min-h-screen">
+      <section className="w-full lg:p-2 md:p-20 bg-app-background-1 flex items-center justify-center lg:min-h-screen">
         <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center">
           <div className="w-full md:w-3/5 gap-5 text-center md:text-left">
             <div className="flex flex-col gap-5">
@@ -105,7 +105,7 @@ const LandingPage = () => {
           />
         </div>
       </section>
-      <section className="w-full lg:p-2  md:p-20 app-background-2 flex items-center justify-center md:h-[800px]">
+      <section className="w-full bg-app-background-2 flex items-center justify-center md:h-[800px]">
         <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center">
           <AnimateSection />
           <About />
