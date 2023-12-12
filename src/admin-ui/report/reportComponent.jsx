@@ -16,8 +16,12 @@ import AiReport from "./AiReport";
 import AppDialog from "../../components/ui/AppDialog";
 
 const ReportComponent = ({ data }) => {
-  console.log(data);
-  const [showCharts, setShowCharts] = useState(false);
+  const contentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => contentRef.current,
+  });
+
+   const [showCharts, setShowCharts] = useState(false);
   const toggleView = () => {
     setShowCharts(!showCharts);
   };
@@ -44,7 +48,7 @@ const ReportComponent = ({ data }) => {
     const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]; // Define colors for pie segments
 
     return (
-      <div className="container shadow-md p-4">
+      <div className="container shadow-md p-4" >
         <h2 className="text-xl font-semibold mb-4">Total Issues by Status</h2>
         <PieChart width={400} height={300}>
           <Pie
@@ -207,6 +211,7 @@ const ReportComponent = ({ data }) => {
           <Download
             className="cursor-pointer hover:text-app-brown "
             size={30}
+            onClick={handlePrint}
           />
           <Bot
             className="cursor-pointer hover:text-app-brown"
@@ -223,20 +228,22 @@ const ReportComponent = ({ data }) => {
           </button>
         </div>
       </div>
-      {showCharts ? (
-        <div className="grid grid-cols-3 gap-6">
-          {renderTotalIssuesChart()}
-          {renderPriorityDistributionChart()}
-          {renderPriorityDistributionChart()}
-        </div>
-      ) : (
-        <>
-          {renderTotalIssuesByStatus()}
-          {renderPriorityDistribution()}
-          {renderIssuesByCategory()}
-          {/* {renderRecentIssueActivity()} */}
-        </>
-      )}
+      <section ref={contentRef}>
+        {showCharts ? (
+          <div className="grid grid-cols-3 gap-6">
+            {renderTotalIssuesChart()}
+            {renderPriorityDistributionChart()}
+            {renderPriorityDistributionChart()}
+          </div>
+        ) : (
+          <div>
+            {renderTotalIssuesByStatus()}
+            {renderPriorityDistribution()}
+            {renderIssuesByCategory()}
+            {/* {renderRecentIssueActivity()} */}
+          </div>
+        )}
+      </section>
 
       {/* Delete Confirmation Dialog */}
       <AppDialog
