@@ -7,15 +7,18 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tool
 import { userContext } from "../../contexts/UserContext";
 import { api } from "../../api";
 import toast from "react-hot-toast";
+import { useQueryClient } from "react-query";
 
 export const SideNav = ({ profile, tabIcons, routes }) => {
   const navigate = useNavigate();
   const {user:auth_user} = useContext(userContext)
   const [activeTab, setActiveTab] = useState(0);
+  const queryClient = useQueryClient();
   const handleLogout = async () => {
     try {
       const res = await api.post('/auth/logout')
-      toast.success("You Logged out")
+      queryClient.invalidateQueries('user');
+      toast.success("You Logged out", {duration: 3000})
       navigate(HOME)
     } catch (error) {
       toast.error("Something went wrong")

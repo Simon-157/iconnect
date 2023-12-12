@@ -8,11 +8,14 @@ import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { api } from "../../api";
 import toast from "react-hot-toast";
+import { useQueryClient } from "react-query";
 
 const LandingPage = () => {
+    const queryClient = useQueryClient();
   const handleLogout = async () => {
     try {
       const res = await api.post("/auth/logout");
+      queryClient.invalidateQueries('user');
       toast.success("You Logged out", { duration: 3000 });
     } catch (error) {
       console.error(error);
