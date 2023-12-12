@@ -103,7 +103,7 @@ const UserManagement = () => {
         <SearchBox searchTerm={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
 
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-auto">
         <table className="min-w-full border border-gray-100 rounded-lg ">
           <thead className="bg-gray-200">
             <tr>
