@@ -7,11 +7,12 @@ import { userContext } from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { api } from "../../api";
+import toast from "react-hot-toast";
 
 const LandingPage = () => {
   const handleLogout = async () => {
     try {
-      const res = await api.get("/auth/logout");
+      const res = await api.post("/auth/logout");
       toast.success(res.data.message, (duration = 30000));
     } catch (error) {
       toast.error("Something went wrong");

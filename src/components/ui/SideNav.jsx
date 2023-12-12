@@ -14,7 +14,7 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
   const [activeTab, setActiveTab] = useState(0);
   const handleLogout = async () => {
     try {
-      const res = await api.get('/auth/logout')
+      const res = await api.post('/auth/logout')
       toast.success(res.data.message, duration=30000)
       navigate(HOME)
     } catch (error) {
