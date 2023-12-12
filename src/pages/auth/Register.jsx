@@ -201,7 +201,7 @@ const Register = () => {
               )}
             </div>
 
-            <div className="p-5 pt-8 flex flex-col gap-2  ml-5">
+            <div className="p-5 pt-8 flex flex-col gap-2">
               <ButtonM
                 type="primary"
                 className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
@@ -213,7 +213,7 @@ const Register = () => {
             <div className="text-lg text-center text-gray-700">
               Continue with your socials
             </div>
-            <div className="flex justify-between items-center mr-5">
+            <div className="flex justify-between items-center mr-5 ml-5">
               <ButtonM
                 onClick={() => {
                   googleLogin();
