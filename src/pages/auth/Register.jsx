@@ -142,7 +142,7 @@ const Register = () => {
             <h2 className="text-app-white text-2xl">
               Get Started With Ashesi iConnect
             </h2>
-            <Logo width={120} />
+            <Logo width={50} height={50} />
           </div>
           <div className="pl-5 pr-5 flex flex-col gap-1 w-full">
               <h3 className="text-app-white">First Name</h3>
