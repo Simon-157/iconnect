@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-const An = () => {
+const AnimateSection = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const An = () => {
   return <div ref={containerRef} />;
 };
 
-export default An;
+export default AnimateSection;
 
 
 

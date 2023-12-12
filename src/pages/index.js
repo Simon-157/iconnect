@@ -1,4 +1,3 @@
-import HomePage from "./Home/Home"
 import Complaints from "./protected/complaints/Complaints"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
@@ -24,7 +23,6 @@ export {
     AssignedIssues,
     Protected,
     Profile,
-    HomePage,
     Login,
     Register,
     Complaints,

@@ -9,6 +9,8 @@ import LoginModal from "./LoginModal";
 import { api } from "../../api";
 import toast from "react-hot-toast";
 import { useQueryClient } from "react-query";
+import About from "./About";
+import AnimateSection from "../../components/auth/AnimateSection";
 
 const LandingPage = () => {
     const queryClient = useQueryClient();
@@ -35,7 +37,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden bg-app-background-1 lg:w-screen">
+    <main className="flex flex-col min-h-screen overflow-x-hidden bg-app-background-1 lg:w-screen">
       <nav className="border-b h-20 flex justify-between items-center p-3 md:items-center md:pl-0 space-x-2 lg:space-x-3 xl:space-x-6 md:relative bg-transparent z-10">
         <div className="flex gap-1">
           <Logo width={30} height={30} />
@@ -101,6 +103,12 @@ const LandingPage = () => {
             alt="Hero"
           />
         </div>
+
+      </section>
+      <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center md:h-[800px]">
+        <AnimateSection />
+        <About />
+
       </section>
 
       <AppDialog
@@ -109,7 +117,7 @@ const LandingPage = () => {
         setOpenChange={closeLoginModal}
         content={<LoginModal />}
       />
-    </div>
+    </main>
   );
 };
 

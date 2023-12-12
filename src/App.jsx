@@ -19,8 +19,6 @@ import {
   ASSIGNED,
   PEOPLE,
   REPORTS,
-  LANDINGPAGE,
-  PLAYGROUND,
   ADMIN,
 } from "./utils/Routes";
 

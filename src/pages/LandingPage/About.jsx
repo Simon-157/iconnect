@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { AppLayout } from "../../components/ui/AppLayout";
 import AppSideBar from '../../components/common/AppSideBar';
 
-const HomePage = ({ setSelectedLink }) => {
+const About = ({ setSelectedLink }) => {
 
   const handleLinkClick = (link) => {
     setSelectedLink(link);
@@ -21,4 +21,4 @@ const HomePage = ({ setSelectedLink }) => {
   )
 }
 
-export default HomePage
+export default About
