@@ -15,7 +15,7 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
   const handleLogout = async () => {
     try {
       const res = await api.post('/auth/logout')
-      toast.success("You Logged out", {duration:30000})
+      toast.success("You Logged out")
       navigate(HOME)
     } catch (error) {
       toast.error("Something went wrong")
@@ -50,6 +50,8 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
             avatarUrl: auth_user?.avatarUrl
           }}
         />
+        {
+          auth_user && Object.keys(auth_user).length !== 0 &&
         <TabButton
           icon={<LogOut size={20} className="text-app-white group-active:scale-90 transition-all duration-50 ease-in" onClick={handleLogout}/>}
           index={tabIcons?.length}
@@ -57,6 +59,7 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
           setActiveTab={setActiveTab}
           name = "logout"
         />
+        }
       </div>
     </div>
   );

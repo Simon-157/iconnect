@@ -5,24 +5,20 @@ import { LOGIN } from "../../utils/Routes";
 import Loader from "../../components/ui/Loader";
 import toast from "react-hot-toast";
 
-
-
 const Protected = () => {
   const location = useLocation();
   const { user: current_user, userLoading: isCurrentUserLoading } = useContext(userContext);
   console.log(current_user);
 
   if (isCurrentUserLoading) {
-    return <Loader bgColor="green"  message={"caching..."} width={50} height={50}/>;
+    return <Loader bgColor="green" message={"caching..."} width={50} height={50} />;
   }
-  if (!isCurrentUserLoading && current_user) {
+  if (!isCurrentUserLoading && current_user && Object.keys(current_user).length !== 0) {
     return <Outlet />;
   } else {
-    toast.error("login as admin to access this page")
+    toast.error("Login to access this page");
     return <Navigate to={LOGIN} state={{ from: location }} replace />;
   }
 };
 
 export default Protected;
-
-
