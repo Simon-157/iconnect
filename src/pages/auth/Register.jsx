@@ -190,7 +190,7 @@ const Register = () => {
               <h3>Confirm Password</h3>
               <Input
                 placeholder=""
-                value={password}
+                value={confirmPassword}
                 type={"password"}
                 onChange={handleConfirmPasswordChange}
                 classNames='w-full'
