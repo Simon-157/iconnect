@@ -7,7 +7,7 @@ import google from "../../assets/google.png";
 import office from "../../assets/office.jpeg";
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { baseURL } from "../../api";
+import { api, baseURL } from "../../api";
 import { Mail } from "lucide-react";
 import { validateEmail, validatePassword } from "../../utils/validation";
 import toast from "react-hot-toast";
