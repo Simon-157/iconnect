@@ -9,7 +9,7 @@ const Input = ({ onChange, value, placeholder, style, type, classNames, icon }) 
   };
 
   return (
-    <div className="relative">
+    <div className="relative max-w-full">
       <input
         className={`rounded-lg shadow-card_shadow p-3 text-app-white bg-input-bg-color focus:outline-none pl-3 ${classNames}`}
         style={style}
