@@ -8,6 +8,7 @@ import office from "../../assets/office.jpeg";
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
 import { baseURL } from "../../api";
+import { Mail } from "lucide-react";
 
 const width = 400;
 const height = 500;
