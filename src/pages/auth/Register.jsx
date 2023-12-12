@@ -144,21 +144,23 @@ const Register = () => {
             </h2>
             <Logo width={120} />
           </div>
-\            <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3 p-5">
               <h3 className="text-app-white">First Name</h3>
               <Input
                 placeholder=""
                 value={firstName}
                 onChange={handleFirstNameChange}
+                classNames={'w-full md:w-auto'}
               />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3 p-5" >
               <h3 className="text-app-white">Last Name</h3>
               <Input
                 placeholder=""
                 value={lastName}
                 onChange={handleLastNameChange}
+                classNames={'w-full md:w-auto'}
               />
             </div>
 
@@ -170,6 +172,7 @@ const Register = () => {
                 value={email}
                 onChange={handleEmailChange}
                 icon={<Mail />}
+                classNames={'w-full md:w-auto'}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -179,6 +182,7 @@ const Register = () => {
                 value={password}
                 type={"password"}
                 onChange={handlePasswordChange}
+                classNames={'w-full md:w-auto'}
               />
             </div>
 
@@ -189,6 +193,7 @@ const Register = () => {
                 value={password}
                 type={"password"}
                 onChange={handleConfirmPasswordChange}
+                classNames={'w-full md:w-auto'}
               />
               {password !== confirmPassword && (
                 <span className="text-red-500 text-xs">password do not match</span>
