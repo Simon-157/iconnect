@@ -106,8 +106,7 @@ const UserManagement = () => {
       </div>
       <div className="overflow-x-auto overflow-y-auto">
           <table className="min-w-full border border-gray-100 rounded-lg ">
-          <ContentScrollable
-        nav1={
+      
           <thead className="bg-gray-200">
             <tr>
               <th className="text-left py-2 px-3 font-semibold text-gray-700">Profile</th>
@@ -124,10 +123,10 @@ const UserManagement = () => {
               </th>
               <th className="text-left py-2 px-3 font-semibold text-gray-700">Actions</th>
             </tr>
-          </thead>}
-           content={
+          </thead>
 
-             <tbody>
+
+             <tbody className='space-y-2 w-full overflow-y-auto scroll-hide scroll-smooth'>
                {filteredUsers.map((user, index) => (
                  <tr key={user.user_id} className={`bg-${index % 2 === 0 ? 'white' : 'app-background-2'} hover:bg-gray-200 cursor-pointer`}>
                    <td className="py-5 px-3 flex items-center">  <img
@@ -156,10 +155,6 @@ const UserManagement = () => {
                ))}
              </tbody>
 
-
-           }
-          
-          />
         </table>
       </div>
        {/* Change Role Confirmation Dialog */}
