@@ -105,7 +105,9 @@ const UserManagement = () => {
 
       </div>
       <div className="overflow-x-auto overflow-y-auto">
-        <table className="min-w-full border border-gray-100 rounded-lg ">
+          <table className="min-w-full border border-gray-100 rounded-lg ">
+          <ContentScrollable
+        nav1={
           <thead className="bg-gray-200">
             <tr>
               <th className="text-left py-2 px-3 font-semibold text-gray-700">Profile</th>
@@ -122,8 +124,7 @@ const UserManagement = () => {
               </th>
               <th className="text-left py-2 px-3 font-semibold text-gray-700">Actions</th>
             </tr>
-          </thead>
-          <ContentScrollable
+          </thead>}
            content={
 
              <tbody>
