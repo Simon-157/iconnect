@@ -35,7 +35,7 @@ const Register = () => {
   const navigate = useNavigate()
 
   const handleFirstNameChange = (e) => {
-    setConfirmPassword(e.target.value);
+    setFirstName(e.target.value);
   };
   const handleLastNameChange = (e) => {
     setLastName(e.target.value);
@@ -208,7 +208,7 @@ const Register = () => {
               <ButtonM
                 type="primary"
                 className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
-                onClick={handleLogin}
+                onClick={handleRegister}
               >
                 Login
               </ButtonM>
