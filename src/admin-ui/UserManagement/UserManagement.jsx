@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import TableLoader from './PeopleSkeleton';
 import { capitalizeInitials } from '../../utils/functions';
 import SearchBox from '../../components/ui/SearchBox';
+import { ContentScrollable } from '../../components/ui/ContentScrollable';
 
 const fetchUsers = async () => {
   const response = await  api.get('/api/user/admin/all');
@@ -122,34 +123,42 @@ const UserManagement = () => {
               <th className="text-left py-2 px-3 font-semibold text-gray-700">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {filteredUsers.map((user, index) => (
-              <tr key={user.user_id} className={`bg-${index % 2 === 0 ? 'white' : 'app-background-2'} hover:bg-gray-200 cursor-pointer`}>
-                <td className="py-5 px-3 flex items-center">  <img
-                                src={user?.avatar_url}
-                                alt="User Avatar"
-                                className="w-8 h-8 rounded-full mr-3"
-                            /></td>
-                <td className="py-2 px-3">{capitalizeInitials(user.display_name)}</td>
-                <td className="py-2 px-3">{user.email}</td>
-                <td className="py-2 px-3">{user.role}</td>
-                <td className="py-2 px-3">
-                  <select
-                    value={user.role}
-                    // onChange={e => handleRoleChange(user.user_id, e.target.value)}
-                    onChange={e => openRoleConfirmation({ user_id: user.user_id, display_name: user.display_name, role: e.target.value })}
+          <ContentScrollable
+           content={
 
-                  className="border rounded px-2 py-1 w-full focus:outline-none"
-                  >
-                    <option value="student">User</option>
-                    <option value="administrator">Admin</option>
-                    <option value="developer">Developer</option>
-                    <option value="resolver">Resolver</option>
-                  </select>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+             <tbody>
+               {filteredUsers.map((user, index) => (
+                 <tr key={user.user_id} className={`bg-${index % 2 === 0 ? 'white' : 'app-background-2'} hover:bg-gray-200 cursor-pointer`}>
+                   <td className="py-5 px-3 flex items-center">  <img
+                                   src={user?.avatar_url}
+                                   alt="User Avatar"
+                                   className="w-8 h-8 rounded-full mr-3"
+                               /></td>
+                   <td className="py-2 px-3">{capitalizeInitials(user.display_name)}</td>
+                   <td className="py-2 px-3">{user.email}</td>
+                   <td className="py-2 px-3">{user.role}</td>
+                   <td className="py-2 px-3">
+                     <select
+                       value={user.role}
+                       // onChange={e => handleRoleChange(user.user_id, e.target.value)}
+                       onChange={e => openRoleConfirmation({ user_id: user.user_id, display_name: user.display_name, role: e.target.value })}
+   
+                     className="border rounded px-2 py-1 w-full focus:outline-none"
+                     >
+                       <option value="student">User</option>
+                       <option value="administrator">Admin</option>
+                       <option value="developer">Developer</option>
+                       <option value="resolver">Resolver</option>
+                     </select>
+                   </td>
+                 </tr>
+               ))}
+             </tbody>
+
+
+           }
+          
+          />
         </table>
       </div>
        {/* Change Role Confirmation Dialog */}
