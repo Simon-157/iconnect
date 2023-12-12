@@ -10,6 +10,7 @@ import { WebSocketContext } from "../../contexts/WebsocketContext";
 import { baseURL } from "../../api";
 import { Mail } from "lucide-react";
 import { validateEmail, validatePassword } from "../../utils/validation";
+import toast from "react-hot-toast";
 
 const width = 400;
 const height = 500;
