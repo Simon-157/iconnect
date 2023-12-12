@@ -13,7 +13,7 @@ const Protected = () => {
   if (isCurrentUserLoading) {
     return <Loader bgColor="green" message={"caching..."} width={50} height={50} />;
   }
-  if (!isCurrentUserLoading && current_user && Object.keys(current_user).length !== 0) {
+  if (!isCurrentUserLoading && current_user) {
     return <Outlet />;
   } else {
     toast.error("Login to access this page");
