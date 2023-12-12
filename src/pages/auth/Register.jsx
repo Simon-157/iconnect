@@ -138,21 +138,13 @@ const Register = () => {
       <section className="w-full md:w-1/2 flex justify-center items-center">
         {/* Login form */}
         <AuthFieldsContainer classNames="w-full max-w-md mx-auto px-4">
-          <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
-            <h2 className="text-app-white text-2xl font-semibold">
-              Log in to Ashesi iConnect
-            </h2>
-            <Logo width={120} />
-          </div>
-
-          <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
+           <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
             <h2 className="text-app-white text-2xl">
               Get Started With Ashesi iConnect
             </h2>
             <Logo width={120} />
           </div>
-          <div className="p-5 flex gap-3">
-            <div className="flex flex-col gap-2">
+\            <div className="flex flex-col gap-2">
               <h3 className="text-app-white">First Name</h3>
               <Input
                 placeholder=""
@@ -169,7 +161,6 @@ const Register = () => {
                 onChange={handleLastNameChange}
               />
             </div>
-          </div>
 
           <div className="flex flex-col gap-5 p-5">
             <div className="flex flex-col gap-2">
@@ -244,8 +235,8 @@ const Register = () => {
               </ButtonM>
             </div>
             <div className="text-sm text-center text-gray-400">
-              Don't have an account yet?{" "}
-              <span className="cursor-pointer text-red-900">Register</span>
+              Already have an account?{" "}
+              <a href="/login" className=" text-red-900">Login</a>
             </div>
           </div>
         </AuthFieldsContainer>

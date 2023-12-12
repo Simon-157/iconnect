@@ -163,7 +163,7 @@ const handleLogin = async () => {
             </div>
             <div className="text-sm text-center text-gray-400">
               Don't have an account yet?{" "}
-              <span className="cursor-pointer text-red-900">Register</span>
+              <a href="/register" className="text-red-900">Register</a>
             </div>
           </div>
         </AuthFieldsContainer>
