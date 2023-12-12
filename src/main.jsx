@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import './index.css';
 import { UserProvider } from './contexts/UserContext.jsx';
@@ -16,29 +16,27 @@ import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from './pages/errors/ErrorBoundary.jsx';
 
-
 const history = createBrowserHistory();
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ErrorBoundary >
     <BrowserRouter>
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <UserProvider>
-          {/* <WebSocketProvider> */}
-            <MainWsHandler history={history}>
-              <WebrtcApp />
-              <App />
-            </MainWsHandler>
-            {/* <ChatWsHandler /> */}
-            <SoundEffectPlayer />
-          {/* </WebSocketProvider> */}
-          <Toaster position="bottom-center" reverseOrder={true} />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </UserProvider>
-      </QueryClientProvider>
-    </React.StrictMode>
+      <NProgress isAnimating={true} minimum={0.1}>
+        {({ isFinished, progress, animationDuration }) => (
+          <QueryClientProvider client={queryClient}>
+            <UserProvider>
+              <MainWsHandler history={history}>
+                <WebrtcApp />
+                <App />
+              </MainWsHandler>
+              <SoundEffectPlayer />
+              <Toaster position="bottom-center" reverseOrder={true} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </UserProvider>
+          </QueryClientProvider>
+        )}
+      </NProgress>
     </BrowserRouter>
   </ErrorBoundary>
 );
