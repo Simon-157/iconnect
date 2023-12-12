@@ -14,28 +14,31 @@ import WebrtcApp from './hotline-room-engine/webrtc/WebrtcApp.jsx';
 import SoundEffectPlayer from './hotline-room-engine/room/sound/SoundEffectPlayer.jsx';
 import { createBrowserHistory } from 'history';
 import { BrowserRouter } from 'react-router-dom';
+import ErrorBoundary from './pages/errors/ErrorBoundary.jsx';
 
 
 const history = createBrowserHistory();
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <UserProvider>
-        {/* <WebSocketProvider> */}
-          <MainWsHandler history={history}>
-            <WebrtcApp />
-            <App />
-          </MainWsHandler>
-          {/* <ChatWsHandler /> */}
-          <SoundEffectPlayer />
-        {/* </WebSocketProvider> */}
-        <Toaster position="bottom-center" reverseOrder={true} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </UserProvider>
-    </QueryClientProvider>
-  </React.StrictMode>,
-  </BrowserRouter>
+  <ErrorBoundary >
+    <BrowserRouter>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <UserProvider>
+          {/* <WebSocketProvider> */}
+            <MainWsHandler history={history}>
+              <WebrtcApp />
+              <App />
+            </MainWsHandler>
+            {/* <ChatWsHandler /> */}
+            <SoundEffectPlayer />
+          {/* </WebSocketProvider> */}
+          <Toaster position="bottom-center" reverseOrder={true} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </UserProvider>
+      </QueryClientProvider>
+    </React.StrictMode>,
+    </BrowserRouter>
+  </ErrorBoundary>
 );
