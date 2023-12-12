@@ -144,7 +144,7 @@ const Register = () => {
             </h2>
             <Logo width={120} />
           </div>
-          <div className="flex flex-col gap-3 p-5">
+          <div className="flex flex-col gap-3 p-5 w-full">
               <h3 className="text-app-white">First Name</h3>
               <Input
                 placeholder=""
@@ -154,7 +154,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-3 p-5" >
+            <div className="flex flex-col gap-3 p-5 w-full"  >
               <h3 className="text-app-white">Last Name</h3>
               <Input
                 placeholder=""
@@ -164,7 +164,7 @@ const Register = () => {
               />
             </div>
 
-          <div className="flex flex-col gap-5 p-5">
+          <div className="flex flex-col gap-5 p-5 w-full">
             <div className="flex flex-col gap-2">
               <h3>Email Address</h3>
               <Input
@@ -175,7 +175,7 @@ const Register = () => {
                 classNames={'w-full md:w-auto'}
               />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <h3>Password</h3>
               <Input
                 placeholder=""
@@ -186,7 +186,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <h3>Confirm Password</h3>
               <Input
                 placeholder=""
