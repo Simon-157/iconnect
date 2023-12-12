@@ -105,7 +105,7 @@ const LoginModal = () => {
           placeholder=""
           value={email}
           onChange={handleEmailChange}
-          icon={<Mail />}
+          icon={<Mail color="black" />}
           classNames="w-full"
         />
       </div>
@@ -116,7 +116,7 @@ const LoginModal = () => {
           value={password}
           type={"password"}
           onChange={handlePasswordChange}
-          classNames="w-full"
+          classNames="w-full text-black"
         />
       </div>
 
