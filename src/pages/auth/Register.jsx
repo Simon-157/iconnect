@@ -10,7 +10,7 @@ import google from "../../assets/google.png";
 import office from "../../assets/office.jpeg";
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { baseURL } from "../../api";
+import { api, baseURL } from "../../api";
 import AnimateSection from "../../components/auth/AnimateSection";
 import {
   validateEmail,
@@ -89,6 +89,7 @@ const Register = () => {
         navigate("/login")
     } catch (error) {
         console.error(error)
+
         toast.error("something went wrong")
         
     }
@@ -200,7 +201,7 @@ const Register = () => {
               )}
             </div>
 
-            <div className="p-5 pt-8 flex flex-col gap-2">
+            <div className="p-5 pt-8 flex flex-col gap-2  ml-5">
               <ButtonM
                 type="primary"
                 className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
@@ -212,7 +213,7 @@ const Register = () => {
             <div className="text-lg text-center text-gray-700">
               Continue with your socials
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mr-5">
               <ButtonM
                 onClick={() => {
                   googleLogin();
@@ -223,7 +224,7 @@ const Register = () => {
                   <img src={google} height={20} width={20} alt="Google Icon" />
                 }
               >
-                Google login
+                Cont to Google login
               </ButtonM>
               <span>OR</span>
               <ButtonM
@@ -236,7 +237,7 @@ const Register = () => {
                   <img src={office} height={20} width={20} alt="Google Icon" />
                 }
               >
-                Office login
+               Cont to Office login
               </ButtonM>
             </div>
             <div className="text-sm text-center text-gray-400">

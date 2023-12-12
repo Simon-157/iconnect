@@ -23,7 +23,7 @@ const Input = ({ onChange, value, placeholder, style, type, classNames, icon }) 
           className="absolute inset-y-0 right-2 flex items-center pl-3 pointer-events-auto cursor-pointer"
           onClick={togglePasswordVisibility}
         >
-          {showPassword ? <Eye /> : <EyeOff />}
+          {showPassword ? <Eye color="black" /> : <EyeOff color='black'/>}
         </span>
       )}
       {icon && (
