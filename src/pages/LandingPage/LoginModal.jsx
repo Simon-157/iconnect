@@ -9,6 +9,7 @@ import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
 import { baseURL } from "../../api";
 import { Mail } from "lucide-react";
+import { validateEmail, validatePassword } from "../../utils/validation";
 
 const width = 400;
 const height = 500;
