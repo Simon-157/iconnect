@@ -45,7 +45,7 @@ const LoginModal = () => {
   };
 
   try {
-        const res = await api.post("/auth/local/login", userData);
+        const res = await api.post("/auth/login", userData);
         toast.success("successfully loged in");
     } catch (error) {
         console.error(error)
