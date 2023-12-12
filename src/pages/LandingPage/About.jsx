@@ -8,7 +8,7 @@ const About = ({ setSelectedLink }) => {
   };
 
   return (
-      <div className='flex flex-col lg:flex-row lg:space-x-6'>
+      <div className='flex flex-col lg:flex-row '>
         <div className='w-full lg:w-3/4 pt-6 lg:pt-0'>
           <p className='font-inter font-normal text-base lg:text-lg leading-7 lg:leading-8 tracking-wide text-app-white'>
             <span className='font-medium'>ASHESI iCONNECT</span> aims to enhance communication and issue resolution within the Ashesi University community. This application provides a platform for students, faculty, and staff to report various issues, such as maintenance requests, safety concerns, academic inquiries, and more, to the appropriate departments or categories for efficient and timely resolution.{' '}

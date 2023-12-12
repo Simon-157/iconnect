@@ -105,8 +105,8 @@ const LandingPage = () => {
           />
         </div>
       </section>
-      <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center md:h-[800px]">
-        <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center bg-app-background-2">
+      <section className="w-full lg:p-2  md:p-20 app-background-2 flex items-center justify-center md:h-[800px]">
+        <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center">
           <AnimateSection />
           <About />
         </div>
