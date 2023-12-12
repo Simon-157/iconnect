@@ -10,11 +10,13 @@ import { api } from "../../api";
 import toast from "react-hot-toast";
 
 const LandingPage = () => {
+  
   const handleLogout = async () => {
     try {
       const res = await api.post("/auth/logout");
-      toast.success(res.data.message, (duration = 30000));
+      toast.success("You Logged out", { duration: 30000 });
     } catch (error) {
+      console.error(error)
       toast.error("Something went wrong");
     }
   };

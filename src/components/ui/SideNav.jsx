@@ -15,7 +15,7 @@ export const SideNav = ({ profile, tabIcons, routes }) => {
   const handleLogout = async () => {
     try {
       const res = await api.post('/auth/logout')
-      toast.success(res.data.message, duration=30000)
+      toast.success("You Logged out", {duration:30000})
       navigate(HOME)
     } catch (error) {
       toast.error("Something went wrong")
