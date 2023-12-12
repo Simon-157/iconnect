@@ -1,5 +1,5 @@
 import { Bot, Download, ToggleLeftIcon } from "lucide-react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import AiReport from "./AiReport";
 import AppDialog from "../../components/ui/AppDialog";
+import { useReactToPrint } from "react-to-print";
 
 const ReportComponent = ({ data }) => {
   const contentRef = useRef();
