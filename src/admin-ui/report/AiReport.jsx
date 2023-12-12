@@ -17,11 +17,12 @@ const AiReport = ({ stat, closeGenerateConfirmation }) => {
       method: "POST",
       url: "https://api.edenai.run/v2/text/generation",
       headers: {
-        authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYTU5ZmQzYWQtOTBiZC00ZDllLThiM2ItZGJiY2M2ODkwYTJkIiwidHlwZSI6ImFwaV90b2tlbiJ9.XnJmmssdb19_PecZ5410vqpQXcok44UXjOCMYAzfdgM",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYTU5ZmQzYWQtOTBiZC00ZDllLThiM2ItZGJiY2M2ODkwYTJkIiwidHlwZSI6ImFwaV90b2tlbiJ9.XnJmmssdb19_PecZ5410vqpQXcok44UXjOCMYAzfdgM",
       },
       data: {
         providers: "openai",
-        text: `Generate a comprehensive report with markdown code formatted nicely for this issue reporting and resolution platform using this statistics as a reference ${stat}`,
+        text: `Generate a comprehensive Markdown-formatted code report summarizing the issue reporting and resolution statistics for Ashesi Campus. Utilize the following data: ${stat}. Please format the report in a clear and organized manner, reflecting the provided statistics accurately within a specified period. Use Markdown syntax for the output. the code should be well formatted with margins set.`,
         temperature: 0,
         max_tokens: 1000,
         fallback_providers: "google",
@@ -52,15 +53,14 @@ const AiReport = ({ stat, closeGenerateConfirmation }) => {
   return (
     <div className="flex flex-col p-4 space-y-4 bg-app-background-1 text-app-white h-full">
       {content.length < 2 ? (
-        <p className="text-center text-lg">Click continue to generate the report </p>
+        <p className="text-center text-lg">
+          Click continue to generate the report{" "}
+        </p>
       ) : (
         <ContentScrollable content={<A4Preview content={content} />} />
-        
       )}
       <div className="flex justify-end space-x-2 ">
-        {generateMutation.isSuccess && (
-            <Download   width={20} height={20} />
-        )}
+        {generateMutation.isSuccess && <Download width={20} height={20} />}
         <ButtonM
           onClick={() => generateMutation.mutate()}
           className="bg-red-500 px-4 py-2 rounded-md"
