@@ -15,7 +15,7 @@ const A4Preview = ({ content }) => {
 
   return (
     <div className="">
-      <div className="max-w-3xl my-8 bg-white border border-gray-300 rounded-md" ref={contentRef}>
+      <div className="max-w-3xl my-8 bg-white border border-gray-300 rounded-md " ref={contentRef}>
         <div className="print-content">
           <MdEditor.Markdown className="prose bg-white text-black" source={content} />
         </div>

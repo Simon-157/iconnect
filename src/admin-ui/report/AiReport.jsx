@@ -50,14 +50,14 @@ const AiReport = ({ stat, closeGenerateConfirmation }) => {
   });
 
   return (
-    <div className="flex flex-col p-4 space-y-4 bg-app-background-1 text-app-white h-full">
+    <div className="flex flex-col p-4 space-y-4 bg-app-background-1 text-app-white h-full mb-10">
       {content.length < 2 ? (
         <p className="text-center text-lg">Click continue to generate the report </p>
       ) : (
         <ContentScrollable content={<A4Preview content={content} />} />
         
       )}
-      <div className="flex justify-end space-x-2 ">
+      <div className="flex justify-end space-x-2 mb-5">
         {generateMutation.isSuccess && (
             <Download   width={20} height={20} />
         )}
