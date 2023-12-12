@@ -2,9 +2,8 @@ import { useContext, useState } from "react";
 import AppDialog from "../../components/ui/AppDialog";
 import heroImg from "../../assets/hero2.svg";
 import { Logo } from "../../components/ui/Logo";
-import Login from "../auth/Login";
 import { userContext } from "../../contexts/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { api } from "../../api";
 import toast from "react-hot-toast";
@@ -14,6 +13,7 @@ import AnimateSection from "../../components/auth/AnimateSection";
 import Footer from "../../components/common/Footer";
 
 const LandingPage = () => {
+  const navigate = useNavigate()
   const queryClient = useQueryClient();
   const handleLogout = async () => {
     try {
@@ -94,9 +94,12 @@ const LandingPage = () => {
                 vibrant campus community tailored for you!
               </h3>
             </div>
-            <button className="font-semibold my-4 bg-red-900 text-white rounded-lg px-10 p-3">
+
+            {user && Object.keys(user).length !== 0 ? <h3 className="font-semibold my-4 text-red-900 rounded-lg px-10 p-3">Welcome {user?.displayName}</h3>:
+            <button className="font-semibold my-4 bg-red-900 text-white rounded-lg px-10 p-3" onClick={() => navigate('/register')}>
               Register
             </button>
+}
           </div>
           <img
             src={heroImg}
