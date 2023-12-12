@@ -13,13 +13,45 @@ const width = 400;
 const height = 500;
 
 const LoginModal = () => {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+    const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
- 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = async () => {
+  const isValidEmail = await validateEmail(email);
+  const isValidPassword = await validatePassword(password);
+
+  if (!isValidEmail) {
+    toast.error("Invalid email");
+    return;
+  }
+  if (!isValidPassword) {
+    toast.error("Invalid password");
+    return;
+  }
+
+  const userData = {
+    email,
+    password,
+  };
+
+  try {
+        const res = await api.post("/auth/local/login", userData);
+        toast.success("successfully loged in");
+    } catch (error) {
+        console.error(error)
+        toast.error("something went wrong")
+        
+    }
+}
+
+
   const myDevice = useScreenType();
 
   const left =
@@ -64,25 +96,24 @@ const LoginModal = () => {
         </div>
       </div>
 
-      <div className="p-3 md:p-5">
-        <h3 className="text-app-white">Email Address </h3>
+      <div className="pl-5 pr-5 flex flex-col gap-2 w-full md:p-5">
+        <h3 className="text-app-white">Email Address</h3>
         <Input
           placeholder=""
-          value={inputValue}
-          onChange={handleInputChange}
-          style={{ width: "100%" }}
+          value={email}
+          onChange={handleEmailChange}
+          icon={<Mail />}
+          classNames="w-full"
         />
       </div>
-
-      <div className="p-3 md:p-5">
-        <h3 className="text-app-white">Password </h3>
+      <div className="pl-5 pr-5 flex flex-col gap-2 w-full md:p-5">
+        <h3 className="text-app-white">Password</h3>
         <Input
           placeholder=""
-          value={inputValue}
+          value={password}
           type={"password"}
-          onChange={handleInputChange}
-          className="w-full"
-          style={{ width: "100%" }}
+          onChange={handlePasswordChange}
+          classNames="w-full"
         />
       </div>
 
@@ -90,6 +121,7 @@ const LoginModal = () => {
         <ButtonM
           type="primary"
           className="text-lg text-white bg-red-900 hover:bg-red-700 w-full text-center"
+          onClick={handleLogin}
         >
           Login
         </ButtonM>

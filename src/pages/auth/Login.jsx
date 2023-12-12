@@ -11,7 +11,7 @@ import google from "../../assets/google.png";
 import office from "../../assets/office.jpeg";
 import useScreenType from "../../hooks/useScreenType";
 import { WebSocketContext } from "../../contexts/WebsocketContext";
-import { baseURL } from "../../api";
+import { api, baseURL } from "../../api";
 import AnimateSection from "../../components/auth/AnimateSection";
 import { validateEmail, validatePassword } from "../../utils/validation";
 import toast from "react-hot-toast";
@@ -51,6 +51,16 @@ const handleLogin = async () => {
     email,
     password,
   };
+
+
+    try {
+        const res = await api.post("/auth/local/login", userData);
+        toast.success("successfully loged in");
+    } catch (error) {
+        console.error(error)
+        toast.error("something went wrong")
+        
+    }
 }
 
 
