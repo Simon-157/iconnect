@@ -13,11 +13,11 @@ import About from "./About";
 import AnimateSection from "../../components/auth/AnimateSection";
 
 const LandingPage = () => {
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
   const handleLogout = async () => {
     try {
       const res = await api.post("/auth/logout");
-      queryClient.invalidateQueries('user');
+      queryClient.invalidateQueries("user");
       toast.success("You Logged out", { duration: 3000 });
     } catch (error) {
       console.error(error);
@@ -77,7 +77,7 @@ const LandingPage = () => {
           )}
         </div>
       </nav>
-      <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center md:h-[800px]">
+      <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center h-screen">
         <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center">
           <div className="w-full md:w-3/5 gap-5 text-center md:text-left">
             <div className="flex flex-col gap-5">
@@ -103,12 +103,12 @@ const LandingPage = () => {
             alt="Hero"
           />
         </div>
-
       </section>
       <section className="w-full lg:p-2 p-6 md:p-20 app-background-1 flex items-center justify-center md:h-[800px]">
-        <AnimateSection />
-        <About />
-
+        <div className="flex items-center flex-col md:flex-row md:mb-10 md:justify-center">
+          <AnimateSection />
+          <About />
+        </div>
       </section>
 
       <AppDialog
