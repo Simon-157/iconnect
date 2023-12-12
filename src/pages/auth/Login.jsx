@@ -15,6 +15,7 @@ import { api, baseURL } from "../../api";
 import AnimateSection from "../../components/auth/AnimateSection";
 import { validateEmail, validatePassword } from "../../utils/validation";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const width = 400;
 const height = 500;
@@ -24,6 +25,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
  const { conn } = useContext(WebSocketContext);
   const myDevice = useScreenType();
+  const navigate = useNavigate()
 
 
     const handleEmailChange = (e) => {
@@ -55,15 +57,16 @@ const handleLogin = async () => {
 
     try {
         const res = await api.post("/auth/login", userData);
-        toast.success("successfully loged in");
+        if(res.success){
+          toast.success(res?.data.message);
+          navigate('/complaints')
+        }
+
     } catch (error) {
         console.error(error)
-        toast.error("something went wrong")
-        
+        toast.error("something went wrong")   
     }
 }
-
-
 
   const left =
     typeof window !== "undefined" && window.innerWidth / 2 - width / 2;
