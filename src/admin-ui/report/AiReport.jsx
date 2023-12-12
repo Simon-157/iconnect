@@ -21,7 +21,7 @@ const AiReport = ({ stat, closeGenerateConfirmation }) => {
       },
       data: {
         providers: "openai",
-        text: `Generate a comprehensive report with markdown code formatted nicely for a labwork on chemical compounds`,
+        text: `Generate a comprehensive report with markdown code formatted nicely for this issue reporting and resolution platform using this statistics as a reference ${stat}`,
         temperature: 0,
         max_tokens: 1000,
         fallback_providers: "google",
