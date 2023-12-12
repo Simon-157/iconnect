@@ -144,7 +144,7 @@ const Register = () => {
             </h2>
             <Logo width={120} />
           </div>
-          <div className="pl-5 pr-5 flex flex-col gap-3 p-5 w-full">
+          <div className="pl-5 pr-5 flex flex-col gap-1 w-full">
               <h3 className="text-app-white">First Name</h3>
               <Input
                 placeholder=""
@@ -154,7 +154,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="pl-5 pr-5 flex flex-col gap-3 p-5 w-full"  >
+            <div className="pl-5 pr-5 flex flex-col gap-1 w-full"  >
               <h3 className="text-app-white">Last Name</h3>
               <Input
                 placeholder=""
@@ -164,8 +164,7 @@ const Register = () => {
               />
             </div>
 
-          <div className="pl-5 pr-5 flex flex-col gap-5 p-5 w-full">
-            <div className="flex flex-col gap-2">
+          <div className="pl-5 pr-5 flex flex-col gap-2 w-full">
               <h3>Email Address</h3>
               <Input
                 placeholder=""
@@ -243,7 +242,6 @@ const Register = () => {
               Already have an account?{" "}
               <a href="/login" className=" text-red-900">Login</a>
             </div>
-          </div>
         </AuthFieldsContainer>
       </section>
     </div>
