@@ -137,7 +137,7 @@ const Register = () => {
       </section>
       <section className="w-full md:w-1/2 flex justify-center items-center">
         {/* Login form */}
-        <AuthFieldsContainer classNames="w-full max-w-md mx-auto px-4">
+        <AuthFieldsContainer classNames="w-full max-w-md mx-auto px-4 md:px-0 overflow-y-auto">
            <div className="flex justify-center items-center flex-col-reverse gap-0 pb-5">
             <h2 className="text-app-white text-2xl">
               Get Started With Ashesi iConnect
