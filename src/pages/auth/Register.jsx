@@ -144,27 +144,27 @@ const Register = () => {
             </h2>
             <Logo width={120} />
           </div>
-          <div className="flex flex-col gap-3 p-5 w-full">
+          <div className="pl-5 pr-5 flex flex-col gap-3 p-5 w-full">
               <h3 className="text-app-white">First Name</h3>
               <Input
                 placeholder=""
                 value={firstName}
                 onChange={handleFirstNameChange}
-                classNames={'w-full md:w-auto'}
+                classNames='w-full'
               />
             </div>
 
-            <div className="flex flex-col gap-3 p-5 w-full"  >
+            <div className="pl-5 pr-5 flex flex-col gap-3 p-5 w-full"  >
               <h3 className="text-app-white">Last Name</h3>
               <Input
                 placeholder=""
                 value={lastName}
                 onChange={handleLastNameChange}
-                classNames={'w-full md:w-auto'}
+                classNames='w-full'
               />
             </div>
 
-          <div className="flex flex-col gap-5 p-5 w-full">
+          <div className="pl-5 pr-5 flex flex-col gap-5 p-5 w-full">
             <div className="flex flex-col gap-2">
               <h3>Email Address</h3>
               <Input
@@ -172,41 +172,41 @@ const Register = () => {
                 value={email}
                 onChange={handleEmailChange}
                 icon={<Mail />}
-                classNames={'w-full md:w-auto'}
+                classNames='w-full'
               />
             </div>
-            <div className="flex flex-col gap-2 w-full">
+            <div className="pl-5 pr-5 flex flex-col gap-2 w-full">
               <h3>Password</h3>
               <Input
                 placeholder=""
                 value={password}
                 type={"password"}
                 onChange={handlePasswordChange}
-                classNames={'w-full md:w-auto'}
+                classNames='w-full'
               />
             </div>
 
-            <div className="flex flex-col gap-2 w-full">
+            <div className="pl-5 pr-5 flex flex-col gap-2 w-full">
               <h3>Confirm Password</h3>
               <Input
                 placeholder=""
                 value={password}
                 type={"password"}
                 onChange={handleConfirmPasswordChange}
-                classNames={'w-full md:w-auto'}
+                classNames='w-full'
               />
               {password !== confirmPassword && (
                 <span className="text-red-500 text-xs">password do not match</span>
               )}
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="p-5 pt-8 flex flex-col gap-2">
               <ButtonM
                 type="primary"
                 className="text-lg text-white bg-red-900 hover:bg-red-700 w-full md:w-auto"
                 onClick={handleRegister}
               >
-                Login
+                Register
               </ButtonM>
             </div>
             <div className="text-lg text-center text-gray-700">
