@@ -58,8 +58,8 @@ const handleLogin = async () => {
     try {
         const res = await api.post("/api/user/login", userData);
         if(res.success){
-          toast.success(res?.data.message);
           navigate('/complaints')
+          toast.success(res?.data.message);
         }
 
     } catch (error) {
