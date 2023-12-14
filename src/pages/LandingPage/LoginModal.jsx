@@ -100,13 +100,18 @@ const LoginModal = () => {
       </div>
 
       <div className="pl-5 pr-5 flex flex-col gap-2 w-full md:p-5">
+          <p className="text-sm text-center text-red-700">
+              Please use google or microsoft
+            </p>
         <h3 className="text-app-white">Email Address</h3>
         <Input
           placeholder=""
           value={email}
           onChange={handleEmailChange}
           icon={<Mail color="black" />}
-          classNames="w-full"
+          classNames="w-full disabled:cursor-not-allowed"
+          disabled
+  
         />
       </div>
       <div className="pl-5 pr-5 flex flex-col gap-2 w-full md:p-5">
@@ -116,7 +121,8 @@ const LoginModal = () => {
           value={password}
           type={"password"}
           onChange={handlePasswordChange}
-          classNames="w-full text-black"
+          classNames="w-full text-black disabled:cursor-not-allowed" 
+          disabled
         />
       </div>
 

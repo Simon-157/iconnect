@@ -122,12 +122,18 @@ const handleLogin = async () => {
      
           <div className="flex flex-col gap-5 p-5">
             <div className="flex flex-col gap-2">
+              <p className="text-sm text-center text-red-700">
+              Please use google or microsoft
+            </p>
               <h3>Email Address</h3>
               <Input
                 placeholder=""
                 value={email}
                 onChange={handleEmailChange}
                 icon={<Mail />}
+                classNames={'disabled:cursor-not-allowed'}
+                disabled
+                
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -137,6 +143,8 @@ const handleLogin = async () => {
                 value={password}
                 type={"password"}
                 onChange={handlePasswordChange}
+                classNames={'disabled:cursor-not-allowed'}
+                disabled
               />
             </div>
             <div className="flex flex-col gap-2">
