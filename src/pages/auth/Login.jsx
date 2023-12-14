@@ -56,7 +56,7 @@ const handleLogin = async () => {
 
 
     try {
-        const res = await api.post("/auth/login", userData);
+        const res = await api.post("/api/user/login", userData);
         if(res.success){
           toast.success(res?.data.message);
           navigate('/complaints')
